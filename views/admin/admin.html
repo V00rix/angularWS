@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="/views/admin/admin.css">
+<div class="container ws-lowered-60" ng-app="webShop" ng-controller="AdminController" ng-init="onInit()">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1>Admin Page</h1>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6">
+					<h2>Products</h2>
+					<div class="list-group">
+						<a ng-repeat="product in models.products" class="list-group-item"
+						ng-click="productSelected($index)">
+						{{product.id}}. {{product.name}} <span class="badge">{{ product.quantity }}</span>
+					</a>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 ws-form-fixed">
+				<div ng-if="selectedProduct === null">
+					<button type="button" class="btn btn-default" ng-click="newProduct()">Add Product</button>
+				</div>
+				<form ng-submit="editConfirmed()" ng-if="selectedProduct">
+					<ul class="list-group">
+						<li class="list-group-item">
+
+							<div class="form-group">
+								<label for="usr">Name:</label>
+								<input ng-model="selectedProduct.name" type="text" class="form-control" id="usr">
+							</div>
+							<div class="form-group">
+								<label for="comment">Description:</label>
+								<textarea ng-model="selectedProduct.description" class="form-control" rows="5" id="comment"></textarea>
+							</div>
+
+							<div class="form-group">
+								<label for="usr">ImageUrl:</label>
+								<input ng-model="selectedProduct.imageUrl" type="text" class="form-control" id="usr">
+							</div>
+							<div class="form-group">
+								<label for="usr">Quantity:</label>
+								<input ng-model="selectedProduct.quantity" type="number" min="0" class="form-control" id="usr">
+							</div>
+
+						</li>
+
+						<li class="list-group-item">
+							<button type="submit" class="btn btn-default">Save</button>
+							<button type="button" class="btn btn-default" ng-click="editCanceled()">Cancel</button>
+							<button type="button" class="btn btn-danger" ng-click="deleteProduct()">Delete</button>
+						</li>
+					</ul>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

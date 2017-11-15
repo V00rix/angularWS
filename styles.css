@@ -1,0 +1,20 @@
+/* Global styles */
+
+
+.title {
+  font-size: 40px;
+  color: red;
+}
+
+
+.ws-lowered-60 {
+	margin-top: 60px;
+}
+
+a {
+	cursor: pointer;
+}
+
+.badge {
+	margin-left: 5px;
+}

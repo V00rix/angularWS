@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="./views/products/products.css">
+<div class="container ws-lowered-60" ng-app="app" ng-controller="ProductsController" ng-init="onInit()">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1>Products</h1>
+			<div class="text-center">
+			<div ng-repeat="product in models.products" class="ws-product text-left">
+				<img src="{{product.imageUrl}}" class="ws-product-image" alt="Description" />
+				<h3 class="ws-product-title text-center">{{product.name | uppercase }}</h3>
+				<p class="ws-product-description">{{ product.description }}</p>
+
+				<div class="ws-attach-bottom">
+					<h3 class="ws-action-text" ng-click="addToCart(product)">Get it!</h3>
+				</div>
+
+				<div ng-if="lowQuantity(product.quantity)" class="ws-important">
+					<p>Only {{ product.quantity }} pieces left!</p>
+				</div>
+				<div ng-if="product.quantity === 0" class="ws-cover"></div>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>

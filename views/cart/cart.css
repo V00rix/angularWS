@@ -1,0 +1,9 @@
+div.ws-cart-image {
+    position: relative;
+    display: inline !important;
+}
+
+img.ws-cart-image {
+    width: 10%;
+    position: relative;
+}
