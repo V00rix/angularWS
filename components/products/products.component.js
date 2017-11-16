@@ -1,21 +1,37 @@
-function HeroDetailController() {
+"use strict";
+
+var ProductsController = function ($scope, ProductsService) { 
   var ctrl = this;
-
-  ctrl.delete = function() {
-    ctrl.onDelete({hero: ctrl.hero});
+  
+  ctrl.$onInit = function() {
   };
 
-  ctrl.update = function(prop, value) {
-    ctrl.onUpdate({hero: ctrl.hero, prop: prop, value: value});
-  };
+  ctrl.lowQuantity = function(quantity) {
+    return (quantity <= 10 && quantity >  0) ? true : false;
+  }
+
+  ctrl.addToCart = function(product) {
+    console.log(ProductsService.cartProducts, product);
+    product.quantity--;
+    var prod = ProductsService.cartProducts.find(p => p.id === product.id);
+    if (prod) {
+      prod.quantity++;
+    }
+    else {
+      prod = angular.copy(product);
+      prod.quantity = 1;
+      ProductsService.cartProducts.push(prod);
+    }
+    ProductsService.cartProducts.fullLength = 
+    ProductsService.cartProducts.map(p => p.quantity)
+    .reduce((acc, val) => acc + val ,0);
+  }
 }
 
-app.component('products', {
+app.component('wsProducts', {
   templateUrl: './components/products/products.template.html',
   controller: ProductsController,
   bindings: {
-    hero: '<',
-    onDelete: '&',
-    onUpdate: '&'
+    products: '<'
   }
 });

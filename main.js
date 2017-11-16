@@ -1,26 +1,34 @@
 "use strict";
 
-var rootUrl = "/angularWS"
-var viewsUrl = rootUrl + "/views"
 var app = angular.module("app", ["ngRoute"]);
 
+app.service("ProductsService", ProductsService);
+app.service("HttpService", HttpService);
 
 var configFunction = function ($routeProvider) {
     $routeProvider
     .when("/products",
         {
-            template: '<products></products>',
-            controller: "ProductsController"
+            template: '<ws-products products="$resolve.products"></ws-products>',
+            resolve: { 
+                products: function(ProductsService) { 
+                    return ProductsService.loadProducts(); 
+                }
+            },
+            useAsDefault: true
         })
     .when("/cart",
         {
-            templateUrl: viewsUrl + "/cart/cart",
-            controller: "CartController"
+            template: '<ws-cart products="$resolve.products"></ws-cart>'
         })
     .when("/admin",
         {
-            templateUrl: viewsUrl + "/admin/admin",
-            controller: "AdminController"
+            template: '<ws-admin products="$resolve.products"></ws-admin>',
+            resolve: { 
+                products: function(ProductsService) { 
+                    return ProductsService.loadProducts(); 
+                }
+            }
         })
 }
 configFunction.$inject = ["$routeProvider"];
