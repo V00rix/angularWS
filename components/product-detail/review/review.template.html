@@ -1,0 +1,40 @@
+<link rel="stylesheet" href="./components/product-detail/review/review.styles.css">
+
+<div class="container-fluid ws-review-container ws-margin-bottom-15" ng-style="{'background-color': $ctrl.reviewColor()}">
+	<div class="row">
+		<div class="col-xs-3">
+			<h3 class="text-center">{{ $ctrl.review.user.username }}</h4>
+			<p>{{$ctrl.review.date | date:'medium'}}</p>
+		</div>
+		<div class="col-xs-9">
+			<h3><b>{{ $ctrl.review.title }}</b></h3>
+			<p>{{ $ctrl.review.description }}</p>
+		</div>
+		<!-- <form class="ws-lowered-20">
+			<div class="col-xs-12">
+				<div class="form-group text-center">
+					<label>{{ $ctrl.getCurrentUser().username }}</label>
+				</div>
+				<div class="form-group">
+					<div class="rating-block text-center">
+						<div ng-repeat="n in [1,2,3,4,5]" type="button" class="ws-rating" ng-attr-id="{{'ws-rating-' + n}}" 
+						ng-class="{'ws-rating-selected': $ctrl.rating >= n && $ctrl.hovered < n, 'ws-rating-hovered': $ctrl.hovered >= n}"
+						ng-mouseover="$ctrl.hovered = n" ng-mouseleave="$ctrl.hovered = null" ng-click="$ctrl.rating = n" aria-label="Left Align">
+						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="title">Title</label>
+				<input type="password" class="form-control" id="title">
+			</div>
+			<div class="form-group">
+				<label for="review">Review</label>
+				<textarea type="password" class="form-control ws-resize-vertical-strict ws-review" id="review"></textarea>
+			</div>
+			<button type="submit" class="btn btn-default ws-full-width">Submit</button>
+
+		</div>
+	</form> -->
+</div>
+</div>

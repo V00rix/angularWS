@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="./components/product-detail/review-edit/reviewEdit.styles.css">
+
+<!-- Ng-if user logged in -->
+<!-- 
+	Shows overlay, restricting commenting
+	Shows message and login button  
+-->
+<!-- Leave comment section -->
+
+<div class="container-fluid ws-review-edit-container">
+	<div class="row">
+		<form class="ws-lowered-20">
+			<div class="col-xs-12">
+				<div class="form-group text-center">
+					<label>{{ $ctrl.getCurrentUser().username }}</label>
+				</div>
+				<div class="form-group">
+					<div class="rating-block text-center">
+						<div ng-repeat="n in [1,2,3,4,5]" type="button" class="ws-rating" ng-attr-id="{{'ws-rating-' + n}}" ng-class="{'ws-rating-selected': $ctrl.rating >= n && $ctrl.hovered < n, 'ws-rating-hovered': $ctrl.hovered >= n}" ng-mouseover="$ctrl.hovered = n" ng-mouseleave="$ctrl.hovered = null" ng-click="$ctrl.rating = n" aria-label="Left Align">
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="title">Title</label>
+					<input type="password" class="form-control" id="title">
+				</div>
+				<div class="form-group">
+					<label for="review">Review</label>
+					<textarea type="password" class="form-control ws-resize-vertical-strict ws-min-height-150" id="review"></textarea>
+				</div>
+				<button type="submit" class="btn btn-default ws-full-width">Submit</button>
+			</div>
+		</form>
+	</div>
+</div>

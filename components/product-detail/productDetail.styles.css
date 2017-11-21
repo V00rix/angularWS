@@ -1,0 +1,25 @@
+.ws-product-detail-image {
+	width: 100%;
+}
+
+.ws-product-detail-title {
+	/*background-color: red;*/
+}
+
+.ws-product-detail-container {
+	background-color: #303030;
+	color: white;
+	font-size: 2.4rem;
+	box-shadow: 0 0 10px #000000b8;
+	border-radius: 5px;
+	padding-bottom: 10px;
+}
+
+.ws-product-detail-container a {
+	color: #7fb6d1;
+	text-decoration: none;
+}
+.ws-product-detail-container a:hover {
+	color: #75e7fa;
+	text-decoration: none;
+}

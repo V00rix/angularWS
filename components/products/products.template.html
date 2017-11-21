@@ -9,7 +9,8 @@
 				<h3 class="ws-product-title text-center">{{product.name | uppercase }}</h3>
 				<p class="ws-product-description">{{ product.description }}</p>
 				<div class="ws-attach-bottom">
-					<h3 class="ws-action-text" ng-click="$ctrl.addToCart(product)">Get it!</h3>
+					<h3 class="ws-action-text" ng-click="$ctrl.onProduct({product: product})">Get it!</h3>
+					<!-- <h3 class="ws-action-text" ng-click="$ctrl.addToCart(product)">Get it!</h3> -->
 				</div>
 				<div ng-if="$ctrl.lowQuantity(product.quantity)" class="ws-important">
 					<p>Only {{ product.quantity }} pieces left!</p>

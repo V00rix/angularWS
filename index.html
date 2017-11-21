@@ -1,5 +1,5 @@
 <!doctype html>
-<html  ng-app="app">
+<html  ng-app="app" ng-controller="AppController as main">
 <head>                
   <meta charset="utf-8" />
   <link rel="stylesheet" href="styles.css">
@@ -7,7 +7,6 @@
 <body>
   <ws-header></ws-header>  
   <div ng-view></div>
-
   <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -24,16 +23,21 @@
 
 
   <script src="./models/product.model.js"></script>
+  <script src="./models/user.model.js"></script>
+  <script src="./models/review.model.js"></script>
 
   <!-- <script src="./controllers/products.controller.js"></script> -->
   <!-- <script src="./controllers/cart.controller.js"></script> -->
   <!-- <script src="./controllers/admin.controller.js"></script> -->
-  <!-- <script src="./controllers/main.controller.js"></script> -->
+  <script src="./app/app.controller.js"></script>
 
   <script src="./components/products/products.component.js"></script>  
   <script src="./components/header/header.component.js"></script>  
   <script src="./components/cart/cart.component.js"></script>  
   <script src="./components/admin/admin.component.js"></script>  
+  <script src="./components/product-detail/productDetail.component.js"></script>  
+    <script src="./components/product-detail/review/review.component.js"></script>  
+    <script src="./components/product-detail/review-edit/reviewEdit.component.js"></script>  
 
 </body>
 </html>
