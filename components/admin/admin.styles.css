@@ -1,7 +1,20 @@
+.ws-admin-review {
+	padding: 10px 0 25px !important;
+}
+
+.ws-span-danger {
+	color: red;
+	cursor: pointer;
+}
+
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
-	.ws-form-fixed {   
-		position: fixed !important;
+/*	.ws-form-data-fixed {
+		max-height: calc(100% - 70px);
+		width: 40%;
+		position: fixed;
+		overflow-y: scroll;
 		right: 10px;
-	}
+		bottom: 10px;
+	}*/
 }

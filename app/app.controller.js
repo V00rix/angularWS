@@ -5,11 +5,9 @@
 
 	function AppController($scope, $location) {
 		var ctrl = this;
-		ctrl.selectedProduct = null;
 
-		ctrl.showDetail = function(product) {
-			ctrl.selectedProduct = product;
-			$location.path('/product-detail');
+		ctrl.showDetail = function(productName) {
+			$location.path('/product-detail/' + productName);
 		}
 	}
 

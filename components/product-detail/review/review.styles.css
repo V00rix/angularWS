@@ -10,3 +10,7 @@ p.ws-rating > * {
     left: 5px;
     display: block;
 }
+
+.ws-review-date {
+	font-size: 1.7rem;
+}

@@ -1,4 +1,3 @@
-function User( id, username) {
-	this.id = id || -1;
+function User(username) {
 	this.username = username || "No username";
 }

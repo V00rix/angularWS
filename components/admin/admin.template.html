@@ -13,39 +13,67 @@
 					</a>
 				</div>
 			</div>
-			<div class="col-xs-12 col-sm-6 ws-form-fixed">
+			<div class="col-xs-12 col-sm-6">
 				<div ng-if="$ctrl.selectedProduct === null">
 					<button type="button" class="btn btn-default" ng-click="$ctrl.newProduct()">Add Product</button>
 				</div>
 				<form ng-submit="$ctrl.editConfirmed()" ng-if="$ctrl.selectedProduct">
 					<ul class="list-group">
-						<li class="list-group-item">
+						<li class="list-group-item ws-form-data-fixed">
 
 							<div class="form-group">
 								<label for="usr">Name:</label>
 								<input ng-model="$ctrl.selectedProduct.name" type="text" class="form-control" id="usr">
 							</div>
 							<div class="form-group">
-								<label for="comment">Description:</label>
-								<textarea ng-model="$ctrl.selectedProduct.description" class="form-control" rows="5" id="comment"></textarea>
+								<label for="description">Description:</label>
+								<textarea ng-model="$ctrl.selectedProduct.description" class="form-control ws-resize-vertical-strict ws-min-height-150" rows="5" id="description"></textarea>
 							</div>
 
 							<div class="form-group">
-								<label for="usr">ImageUrl:</label>
-								<input ng-model="$ctrl.selectedProduct.imageUrl" type="text" class="form-control" id="usr">
+								<label for="imageUrl">ImageUrl:</label>
+								<input ng-model="$ctrl.selectedProduct.imageUrl" type="text" class="form-control" id="imageUrl">
 							</div>
 							<div class="form-group">
-								<label for="usr">Quantity:</label>
-								<input ng-model="$ctrl.selectedProduct.quantity" type="number" min="0" class="form-control" id="usr">
+								<label for="cost">Cost:</label>
+								<input ng-model="$ctrl.selectedProduct.cost" type="number" min="0" class="form-control" id="cost">
 							</div>
-
+							<div class="form-group">
+								<label for="quantity">Quantity:</label>
+								<input ng-model="$ctrl.selectedProduct.quantity" type="number" min="0" class="form-control" id="quantity">
+							</div>
+							<!-- Reviews -->
+							<div class="form-group">
+								<label>Reviews</label>
+								<div class="list-group ws-max-height-400">
+									<div ng-repeat="review in $ctrl.selectedProduct.reviews track by $index" class="ws-admin-review list-group-item text-left">
+										<div class="row">
+											
+											<div class="col-xs-3">
+												{{ review.user.username }}
+											</div>
+											<div class="col-xs-5">
+												{{ review.title }}
+											</div>
+											<div class="col-xs-1 text-right">
+												{{ review.rating }}
+											</div>
+											<div class="col-xs-3 text-center">											
+												<span class="ws-span-danger" ng-click="$ctrl.selectedProduct.reviews.splice($index, 1)">Delete</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<button type="button" class="btn btn-default" ng-click="$ctrl.selectedProduct.reviews = []">Remove all</button>
+							<li class="list-group-item">
+								<button type="submit" class="btn btn-default">Save</button>
+								<button type="button" class="btn btn-default" ng-click="$ctrl.editCanceled()">Cancel</button>
+								<button type="button" class="btn btn-danger" ng-click="$ctrl.deleteProduct()">Delete</button>
+							</li>
 						</li>
 
-						<li class="list-group-item">
-							<button type="submit" class="btn btn-default">Save</button>
-							<button type="button" class="btn btn-default" ng-click="$ctrl.editCanceled()">Cancel</button>
-							<button type="button" class="btn btn-danger" ng-click="$ctrl.deleteProduct()">Delete</button>
-						</li>
+
 					</ul>
 				</form>
 			</div>

@@ -9,17 +9,11 @@
     ctrl.hovered = null;
 
     // Functions
-    ctrl.getCurrentUser = getCurrentUser;
     ctrl.reviewColor = reviewColor;
     ctrl.getNumber = getNumber;
 
     function $onInit() {
-      console.log(ctrl.review);
-    };
-
-    function getCurrentUser() {
-      return {username: "Some fake username"};
-    };
+    }
 
     function reviewColor() {
       switch(ctrl.review.rating) {
@@ -39,7 +33,7 @@
     function getNumber(num) {
       return new Array(num);
     }
-  };
+  }
 
   app.component('wsReview', {
     templateUrl: './components/product-detail/review/review.template.html',
@@ -47,5 +41,5 @@
     bindings: {
       review: '<'
     }
-  });
-})();
+  })
+})()

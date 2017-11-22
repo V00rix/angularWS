@@ -4,6 +4,10 @@ div.ws-cart-image {
 }
 
 img.ws-cart-image {
-    width: 10%;
+    width: 100%;
     position: relative;
+}
+
+.ws-col-normalized {
+	padding: 10px 0 25px !important;
 }

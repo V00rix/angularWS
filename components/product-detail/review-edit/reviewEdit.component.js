@@ -1,23 +1,39 @@
 (function () {
   "use strict";
 
-  var ReviewEditController = function ($scope) { 
+  var ReviewEditController = function ($scope, LoginService) { 
     var ctrl = this;
 
     // Parameters
-    ctrl.rating = 3;
     ctrl.hovered = null;
 
-    // Functions
-    ctrl.getCurrentUser = getCurrentUser;
+    // Currnet review model
+    ctrl.review = {
+      rating: 3,
+      title: null,
+      description: null
+    };
 
-    function getCurrentUser() {
-      return {username: "Some fake username"};
-    }
+    // Functions
+    ctrl.getCurrentUser = function() {
+      return LoginService.currentUser;
+    };
+
+    ctrl.submitReview = function(formValid) {
+      if (formValid) {
+        var review = new Review(ctrl.getCurrentUser(), ctrl.review.rating, ctrl.review.title, ctrl.review.description, new Date());
+        ctrl.reviewAdded({review: review});
+      }
+    };
+
+    
   }
 
   app.component('wsReviewEdit', {
     templateUrl: './components/product-detail/review-edit/reviewEdit.template.html',
     controller: ReviewEditController,
+    bindings: {
+      reviewAdded: '&'
+    }
   })
 })();

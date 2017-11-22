@@ -1,4 +1,6 @@
 var ProductsService = function(HttpService, $q) {
+	"use strict";
+	
 	this.products;
 	this.cartProducts = {
 		products: [],
@@ -19,23 +21,23 @@ var ProductsService = function(HttpService, $q) {
 	// 		});
 	// };
 
-	this.fakeProducts = function() {
-		this.words = ["hello", "winter", "again", "sad", "my", "enrage", "never", "can", "you", "imagine"];
+	// this.fakeProducts = function() {
+	// 	this.words = ["hello", "winter", "again", "sad", "my", "enrage", "never", "can", "you", "imagine"];
 
-		this.products = [];
-		for (var i = 0; i < 50; ++i) {
-			this.products.push(new Product(i, this.words[2], 
-				this.words[i % this.words.length - 1] + this.words[i % this.words.length - 1] + 
-				this.words[i % this.words.length - 1] + this.words[i % this.words.length - 1] + 
-				this.words[i % this.words.length - 1] + this.words[i % this.words.length - 1] + 
-				this.words[i % this.words.length - 1]));
-		}
-	}
+	// 	this.products = [];
+	// 	for (var i = 0; i < 50; ++i) {
+	// 		this.products.push(new Product(i, this.words[2], 
+	// 			this.words[i % this.words.length - 1] + this.words[i % this.words.length - 1] + 
+	// 			this.words[i % this.words.length - 1] + this.words[i % this.words.length - 1] + 
+	// 			this.words[i % this.words.length - 1] + this.words[i % this.words.length - 1] + 
+	// 			this.words[i % this.words.length - 1]));
+	// 	}
+	// }
 
 	// Fetches products array from server and returns it or
 	// simply returns it if they have already been loaded
 	this.loadProducts = function() {
-        window.console.log("Attempting to get products...");
+		window.console.log("Attempting to get products...");
 
 		// construct new promise
 		var deferred = $q.defer();
@@ -80,4 +82,4 @@ var ProductsService = function(HttpService, $q) {
 	// this.onInit();
 }
 
-ProductsService.$inject = ['HttpService', '$q'];
+// ProductsService.$inject = ['HttpService', '$q'];

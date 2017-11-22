@@ -3,13 +3,14 @@
 var app = angular.module("app", ["ngRoute"]);
 
 app.service("ProductsService", ProductsService);
+app.service("LoginService", LoginService);
 app.service("HttpService", HttpService);
 
-var configFunction = function ($routeProvider) {
+var configFunction = function ($routeProvider, $interval) {
     $routeProvider
     .when("/products",
     {
-        template: '<ws-products products="$resolve.products" on-product="main.showDetail(product)"></ws-products>',
+        template: '<ws-products products="$resolve.products" on-product="main.showDetail(productName)"></ws-products>',
         resolve: { 
             products: function(ProductsService) { 
                 return ProductsService.loadProducts(); 
@@ -19,7 +20,7 @@ var configFunction = function ($routeProvider) {
     })
     .when("/cart",
     {
-        template: '<ws-cart products="$resolve.products"></ws-cart>'
+        template: '<ws-cart></ws-cart>'
     })
     .when("/admin",
     {
@@ -30,8 +31,8 @@ var configFunction = function ($routeProvider) {
             }
         }
     })
-    .when("/product-detail", {
-        template: '<ws-product-detail product="main.selectedProduct">sddsafsdfsd</ws-product-detail>',
+    .when("/product-detail/:productName?", {
+        template: '<ws-product-detail></ws-product-detail>',
         resolve: { 
             products: function(ProductsService) { 
                 return ProductsService.loadProducts(); 

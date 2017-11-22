@@ -18,8 +18,13 @@
 	margin-top: 20px;
 }
 
+.ws-max-height-400 {
+	max-height: 400px;
+}
+
 .ws-resize-vertical-strict {
 	resize:vertical;
+	overflow: hidden;
 }
 
 .ws-full-width {
@@ -30,6 +35,33 @@
 	margin-bottom: 15px;
 }
 
+.ws-error-label {
+	color: red;
+	margin: 5px 2px;
+}
+
+.ws-cursor-default {
+	cursor: default;
+}
+
+/* doesn't look like a link but still is a link */
+.ws-not-a {
+	cursor: default;
+	color: black;	
+}
+.ws-not-a:hover {
+	color: black;	
+	text-decoration: none;
+}
+.ws-not-a:focus {
+	color: black;
+	text-decoration: none;	
+}
+
+.ws-overflow-hidden {
+	overflow: hidden;
+}
+
 a {
 	cursor: pointer;
 }
@@ -38,6 +70,16 @@ a {
 	margin-left: 5px;
 }
 
-.ws-test-bg {
-	background-color: red;
+.ws-important {
+	height: 50px;
+	position: relative;
+	top: -450px;
+	right: -150px;
+	font-size: 20px;
+	background: linear-gradient(rgba(207, 4, 41, 0.76), #6c1c60);
+	border-bottom-left-radius: 10px;
+	box-shadow: 0 0 10px black;
+	padding: 10px 15px;
+	color: white;
+	cursor: default;
 }
