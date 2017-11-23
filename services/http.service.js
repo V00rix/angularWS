@@ -17,6 +17,10 @@ var HttpService = function($http) {
 		console.log("Loging in " + username  + ", " + password + "...");
 		return $http.post(this.baseUrl +  "login.request.php", {username: username, password: password});
 	} 
+
+	this.findUsername = function(username) {
+		return $http.put(this.baseUrl +  "login.request.php", {username: username});
+	} 
 }
 
 // HttpService.$inject = ['$http'];

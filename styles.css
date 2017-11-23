@@ -44,6 +44,16 @@
 	margin: 5px 2px;
 }
 
+.ws-warn-label {
+	color: orange;
+	margin: 5px 2px;
+}
+
+.ws-success-label {
+	color: #3ecf3e;
+	margin: 5px 2px;
+}
+
 .ws-cursor-default {
 	cursor: default;
 }

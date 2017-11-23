@@ -1,17 +1,23 @@
 <link rel="stylesheet" href="./components/login/login.styles.css">
-<div>
-
-  <div class="ws-login-container">
-    <form ng-submit="$ctrl.login()">
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" ng-model="$ctrl.username" placeholder="Username">
+<div class="ws-login-container">
+  <form ng-submit="$ctrl.login(form.$valid)" name="form" novalidate>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" name="username" id="username" ng-model="$ctrl.username" placeholder="Username" required="" ng-change="$ctrl.findUsername()" ng-model-options="{ debounce: 300 }">
+      <p class="ws-warn-label" ng-show="$ctrl.checkUsername(form)">Please enter username</p>
+      <p class="ws-error-label" ng-if="$ctrl.username && $ctrl.badUsername === true">{{'User «' + $ctrl.username + '» was not found'}}</p>
+      <p class="ws-success-label" ng-if="$ctrl.badUsername === 'found'">{{'User «' + $ctrl.username + '» found'}}</p>
+      <p class="ws-warn-label" ng-if="$ctrl.badUsername === 'searching'">'Searching...'</p>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" name="password" id="password" ng-model="$ctrl.password" placeholder="Password" required>
+      <div ng-show="form.$submitted">
+        <p class="ws-warn-label" ng-show="form.password.$error.required && $ctrl.badPassword != true">Password is empty</p>
+        <p class="ws-error-label" ng-if="$ctrl.badPassword === true">Wrong password</p>
       </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" ng-model="$ctrl.password" placeholder="Password">
-      </div>
-      <button type="submit" class="btn btn-primary ws-full-width ws-button-big">Login</button>
-      <a href="" class="ws-simple-link" ng-click="$ctrl.register()">Register</a>
-    </form>
-  </div>
+    </div>
+    <button type="submit" class="btn btn-primary ws-full-width ws-button-big">Login</button>
+    <a href="" class="ws-simple-link" ng-click="$ctrl.register()">Register</a>
+  </form>
+</div>
