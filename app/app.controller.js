@@ -1,10 +1,14 @@
-var AppController = function () {
-	var ctrl = this;
-	ctrl.login = false;
-	ctrl.displayLogin = function() {
-		ctrl.login = true;
-		console.log(ctrl.login);
-	}
-}
+(function () {
+	"use strict";
 
-app.controller("AppController", AppController);
+	app.controller('AppController', AppController);
+
+	function AppController($scope, $location) {
+		var ctrl = this;
+
+		ctrl.showDetail = function(productName) {
+			$location.path('/product-detail/' + productName);
+		}
+	}
+
+})();

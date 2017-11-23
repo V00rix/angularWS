@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="./components/product-detail/review-edit/reviewEdit.styles.css">
+<div class="container-fluid ws-review-edit-container">
+	<div class="row">
+		<div ng-if="$ctrl.getCurrentUser()" class="col-xs-12 ws-lowered-20">
+			<form ng-submit="$ctrl.submitReview(form.$valid)" name="form" novalidate>
+				<div class="form-group text-center">
+					<a class="ws-not-a" href=""><span class="glyphicon glyphicon-user ws-user-glyphicon" aria-hidden="true"></span>{{ $ctrl.getCurrentUser().username }}</a>
+				</div>
+				<div class="form-group">
+					<div class="rating-block text-center">
+						<div ng-repeat="n in [1,2,3,4,5]" type="button" class="ws-rating" ng-attr-id="{{'ws-rating-' + n}}" ng-class="{'ws-rating-selected': $ctrl.review.rating >= n && $ctrl.hovered < n, 'ws-rating-hovered': $ctrl.hovered >= n}" ng-mouseover="$ctrl.hovered = n" ng-mouseleave="$ctrl.hovered = null" ng-click="$ctrl.review.rating = n" aria-label="Left Align">
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="title">Title</label>
+					<input type="text" class="form-control" id="title" ng-model="$ctrl.review.title" name="title" minlength="5" required>
+					<div ng-show="form.$submitted || form.title.$touched">
+						<p class="ws-error-label" ng-show="form.title.$error.minlength || form.title.$error.required">Please enter review title at least 5 characters long</p>
+					</div>
+					
+				</div>
+				<div class="form-group">
+					<label for="review">Review</label>
+					<textarea class="form-control ws-resize-vertical-strict ws-min-height-150" id="review" name="description" ng-model="$ctrl.review.description" minlength="25" required=""></textarea>
+					<div ng-show="form.$submitted || form.description.$touched">
+						<p class="ws-error-label" ng-show="form.description.$error.minlength || form.description.$error.required">Please enter more detailed description at least 25 characters long</p>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-default ws-full-width">Submit</button>
+			</div>
+		</div>
+		<div ng-if="!$ctrl.getCurrentUser()" class="col-xs-12 ws-lowered-20 text-center">
+			<label for="login">You need to be logged in to provide feedback</label><br>
+			<a href="" id="login">{{ 'Log in' | uppercase }}</a>
+		</div>
+	</form>
+</div>

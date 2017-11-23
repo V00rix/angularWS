@@ -66,22 +66,6 @@
 	text-shadow: 0 0 9px rgba(255, 255, 255, 0.41);
 }
 
-.ws-important {
-	/* width: 200px; */
-	height: 50px;
-	position: relative;
-	top: -450px;
-	right: -150px;
-	font-size: 20px;
-	/* text-align: center; */
-	background: linear-gradient(rgba(207, 4, 41, 0.76), #6c1c60);
-	border-bottom-left-radius: 10px;
-	box-shadow: 0 0 10px black;
-	padding: 10px 15px;
-	color: white;
-	cursor: default;
-}
-
 .ws-cover {
 	position: relative;
 	width: 120%;

@@ -5,12 +5,8 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <ws-header on-login="main.login = !main.login"></ws-header>
   <div ng-view></div>
-  <div class="overlay">
-    
-  <ws-login ng-if="main.login"></ws-login>
-  </div>
+  <ws-header></ws-header>  
   <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -19,6 +15,7 @@
 
   <script src="./services/http.service.js"></script>
   <script src="./services/products.service.js"></script>
+  <script src="./services/login.service.js"></script>
   
   <script src="main.js"></script>
 
@@ -27,6 +24,8 @@
 
 
   <script src="./models/product.model.js"></script>
+  <script src="./models/user.model.js"></script>
+  <script src="./models/review.model.js"></script>
 
   <!-- <script src="./controllers/products.controller.js"></script> -->
   <!-- <script src="./controllers/cart.controller.js"></script> -->
@@ -37,7 +36,9 @@
   <script src="./components/header/header.component.js"></script>  
   <script src="./components/cart/cart.component.js"></script>  
   <script src="./components/admin/admin.component.js"></script>  
-  <script src="./components/login/login.component.js"></script>  
+  <script src="./components/product-detail/productDetail.component.js"></script>  
+    <script src="./components/product-detail/review/review.component.js"></script>  
+    <script src="./components/product-detail/review-edit/reviewEdit.component.js"></script>  
 
 </body>
 </html>
