@@ -9,5 +9,8 @@ var HeaderController = function ($scope, ProductsService) {
 
 app.component('wsHeader', {
   templateUrl: './components/header/header.template.html',
-  controller: HeaderController
+  controller: HeaderController,
+  bindings: {
+  	onLogin: "&"
+  }
 });

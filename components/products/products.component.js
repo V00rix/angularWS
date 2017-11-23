@@ -4,6 +4,7 @@ var ProductsController = function ($scope, ProductsService) {
   var ctrl = this;
   
   ctrl.$onInit = function() {
+    // console.log(ctrl.products);
   };
 
   ctrl.lowQuantity = function(quantity) {

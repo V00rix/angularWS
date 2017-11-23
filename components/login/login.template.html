@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="./components/login/login.styles.css">
+<div>
+
+  <div class="ws-login-container">
+    <form ng-submit="$ctrl.login()">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" id="username" ng-model="$ctrl.username" placeholder="Username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" ng-model="$ctrl.password" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary ws-full-width ws-button-big">Login</button>
+      <a href="" class="ws-simple-link" ng-click="$ctrl.register()">Register</a>
+    </form>
+  </div>

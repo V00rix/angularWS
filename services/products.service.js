@@ -1,3 +1,5 @@
+"use strict";
+
 var ProductsService = function(HttpService, $q) {
 	this.products;
 	this.cartProducts = {
@@ -73,11 +75,11 @@ var ProductsService = function(HttpService, $q) {
 				console.log(res);
 			},
 			(res) => {
-				console.log(res);
+				console.error("Error!", res.statusText + "\n" , res.data);
 			});
 	}
 
 	// this.onInit();
 }
 
-ProductsService.$inject = ['HttpService', '$q'];
+// ProductsService.$inject = ['HttpService', '$q'];

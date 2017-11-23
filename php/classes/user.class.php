@@ -8,7 +8,6 @@ class User {
 	public $history;
 	// remember current cart in case of front-end crash etc.
 	public $currentCart; // = products[] {}
-
 	// some methods
 }
 ?>

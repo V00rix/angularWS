@@ -18,4 +18,14 @@ function get_client_ip() {
 		$ipaddress = 'UNKNOWN';
 	return $ipaddress;
 }
- ?>
+
+$adminIps = ["::1"];
+
+$checkAdmin = function () use ($adminIps) {
+	if (in_array(get_client_ip(), $adminIps))
+		return true;
+	else
+		return false;
+}
+
+?>

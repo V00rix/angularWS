@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="./components/header/header.styles.css">
-<nav class="navbar navbar-default navbar-fixed-top my-navbar">
+<nav class="navbar navbar-default navbar-fixed-top my-navbar" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -11,11 +11,14 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#!products">Products</a></li>
-        <li><a href="#!cart">Cart  <span class="badge">{{ $ctrl.cartProducts.fullLength }}</span></a></li>
-        <!-- shown only if current user is admin -->
-        <li ng-if="false"><a href="#!admin">Admin</a></li>
+        <li><a href="#!products" ng-click="$ctrl.onLogin({val:false})">Products</a></li>
+        <li><a href="#!cart" ng-click="$ctrl.onLogin({val:false})">Cart  <span class="badge">{{ $ctrl.cartProducts.fullLength }}</span></a></li>
       </ul>
+              <!-- shown only if current user is admin -->
+        <ul class="nav navbar-nav navbar-right">
+          <li ng-if="false"><a href="#!admin">Admin</a></li>
+          <li><a ng-click="$ctrl.onLogin({val:true})">Login</a></li>
+        </ul>
     </div>
   </div>
 </nav>
