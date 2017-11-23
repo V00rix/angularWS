@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="./components/header/header.styles.css">
-<nav class="navbar navbar-default navbar-fixed-top my-navbar">
+<nav class="navbar navbar-default navbar-fixed-top my-navbar" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -12,28 +12,16 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li><a href="#!products">Products</a></li>
+        
+      </ul>
+      <!-- shown only if current user is admin -->
+      <ul class="nav navbar-nav navbar-right">
         <li><a href="#!cart">Cart  <span class="badge">{{ $ctrl.cartProducts.fullLength }}</span></a></li>
-        <!-- shown only if current user is admin -->
-        <li ng-if="false"><a href="#!admin">Admin</a></li>
         <li ng-if="$ctrl.getCurrentUser()"><a class="ws-cursor-default" href=""><span class="glyphicon glyphicon-user ws-user-glyphicon" aria-hidden="true"></span>{{ $ctrl.getCurrentUser().username }}</a></li>
+        <!-- <li ng-if="false"><a href="#!admin">Admin</a></li> -->
+        <li><a ng-click="$ctrl.displayLogin = !$ctrl.displayLogin">Login {{$ctrl.getCurrentUser() ? ' to another account' : ''}}</a></li>
       </ul>
     </div>
   </div>
 </nav>
-<div class="ws-login-form" ng-if="!$ctrl.getCurrentUser()">
-  <div class="col-xs-12" name="form">
-    <form novalidate ng-submit="$ctrl.login()">
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" ng-model="$ctrl.username" name="username" id="username" placeholder="Username" required>
-        <p class="ws-error-label" ng-if="$ctrl.badUsername === true">Username not found</p>
-      </div>
-      <div class="form-group">
-        <label for="title">Password</label>
-        <input type="password" class="form-control" ng-model="$ctrl.password" id="password" placeholder="Password" required>
-        <p class="ws-error-label" ng-if="$ctrl.badPassword === true">Wrong password</p>
-      </div>
-      <button type="submit" class="btn btn-default ws-full-width">Submit</button>
-    </form>
-  </div>
-</div>
+<ws-login ng-if="$ctrl.displayLogin" on-login="$ctrl.displayLogin = false"></ws-login>

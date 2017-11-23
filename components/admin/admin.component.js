@@ -1,6 +1,6 @@
 "use strict";
 
-var AdminController = function ($scope, ProductsService) {
+var AdminController = function ($scope, ProductsService, $http) {
 	var ctrl = this;
 
 	ctrl.products = [];
@@ -9,67 +9,71 @@ var AdminController = function ($scope, ProductsService) {
 	ctrl.selectedProductId = null;
 	ctrl.editing = false;
 
-	ctrl.saveProducts = function() {
-		ProductsService.saveProducts();
-	}
+	ctrl.$onInit = function() {
+		//
+    }
 
-	ctrl.productSelected = function(id) {
-		ctrl.editing = true;
-		ctrl.selectedProductId = id;
-		ctrl.selectedProduct = angular.copy(ctrl.products[id]);
-	}
+    ctrl.saveProducts = function() {
+    	ProductsService.saveProducts();
+    }
 
-	ctrl.newProduct = function() {
-		ctrl.selectedProduct = new Product(
-			ctrl.products.map(m => m.id)
-			.reduce((acc, val) => acc > val ? acc : val, 0));
-		ctrl.editing = true;
-	}
+    ctrl.productSelected = function(id) {
+    	ctrl.editing = true;
+    	ctrl.selectedProductId = id;
+    	ctrl.selectedProduct = angular.copy(ctrl.products[id]);
+    }
 
-	ctrl.editConfirmed = function() {
-		console.log(ctrl.selectedProductId, ctrl.products[ctrl.selectedProductId]);
-		if (ctrl.selectedProductId || ctrl.selectedProductId === 0)
-			ctrl.products[ctrl.selectedProductId] = angular.copy(ctrl.selectedProduct);
-		else
-			ctrl.products.push(angular.copy(ctrl.selectedProduct));
-		ctrl.closeEdit();
-		ctrl.saveProducts();
-	}
+    ctrl.newProduct = function() {
+    	ctrl.selectedProduct = new Product(
+    		ctrl.products.map(m => m.id)
+    		.reduce((acc, val) => acc > val ? acc : val, 0));
+    	ctrl.editing = true;
+    }
 
-	ctrl.editCanceled = function() {
-		ctrl.closeEdit();
-	}
+    ctrl.editConfirmed = function() {
+    	console.log(ctrl.selectedProductId, ctrl.products[ctrl.selectedProductId]);
+    	if (ctrl.selectedProductId || ctrl.selectedProductId === 0)
+    		ctrl.products[ctrl.selectedProductId] = angular.copy(ctrl.selectedProduct);
+    	else
+    		ctrl.products.push(angular.copy(ctrl.selectedProduct));
+    	ctrl.closeEdit();
+    	ctrl.saveProducts();
+    }
 
-	ctrl.deleteProduct = function() {
-		if (ctrl.selectedProductId || ctrl.selectedProductId === 0) {
-			ctrl.products.splice(ctrl.selectedProductId, 1);
-			ctrl.saveProducts();
-		}
-		ctrl.closeEdit();
-	}
+    ctrl.editCanceled = function() {
+    	ctrl.closeEdit();
+    }
 
-	ctrl.closeEdit = function() {		
-		ctrl.selectedProduct = null;
-		ctrl.selectedProductId = null;
-		ctrl.editing = false;
-	}
+    ctrl.deleteProduct = function() {
+    	if (ctrl.selectedProductId || ctrl.selectedProductId === 0) {
+    		ctrl.products.splice(ctrl.selectedProductId, 1);
+    		ctrl.saveProducts();
+    	}
+    	ctrl.closeEdit();
+    }
 
-	ctrl.onInit = function() {
-		if (ProductsService.products)
-			ctrl.products = ProductsService.products;
-		else 	
-			ProductsService.loadProducts().then(() => {
-				ctrl.products = ProductsService.products;
-			});
-		
-		console.log(ctrl.products);
-	}
+    ctrl.closeEdit = function() {		
+    	ctrl.selectedProduct = null;
+    	ctrl.selectedProductId = null;
+    	ctrl.editing = false;
+    }
+
+    ctrl.onInit = function() {
+    	if (ProductsService.products)
+    		ctrl.products = ProductsService.products;
+    	else 	
+    		ProductsService.loadProducts().then(() => {
+    			ctrl.products = ProductsService.products;
+    		});
+
+    	console.log(ctrl.products);
+    }
 }
 
 app.component('wsAdmin', {
-  templateUrl: './components/admin/admin.template.html',
-  controller: AdminController,
-    bindings: {
-    products: '<'
-  }
+	templateUrl: './components/admin/admin.template.html',
+	controller: AdminController,
+	bindings: {
+		products: '<'
+	}
 });

@@ -1,0 +1,24 @@
+.ws-login-container {
+	max-width: 300px;
+	width: 100%;
+	background: #f8f8f8;
+	box-shadow: 0 0 10px black;
+	border-radius: 5px;
+	right: 10px;
+	top: 62px;
+	padding: 15px;
+	position: fixed;
+}
+
+.ws-full-width {
+	width: 100%;
+}
+
+.ws-button-big {
+	padding: 10px !important;
+	font-size: 20px !important;
+}
+
+.ws-simple-link {
+    line-height: 30px;
+}

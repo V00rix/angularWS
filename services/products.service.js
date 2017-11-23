@@ -1,3 +1,5 @@
+"use strict";
+
 var ProductsService = function(HttpService, $q) {
 	"use strict";
 	
@@ -75,7 +77,7 @@ var ProductsService = function(HttpService, $q) {
 				console.log(res);
 			},
 			(res) => {
-				console.log(res);
+				console.error("Error!", res.statusText + "\n" , res.data);
 			});
 	}
 

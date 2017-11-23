@@ -10,8 +10,8 @@ var LoginService = function() {
 	
 	*/
 	this.getCurrentUser = function() {
-		return new User("sda");
-		// return null;
+		// return new User("sda");
+		return null;
 	}
 
 	this.currentUser = this.getCurrentUser(); 

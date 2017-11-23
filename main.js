@@ -1,5 +1,6 @@
 "use strict";
 
+var x = 5;
 var app = angular.module("app", ["ngRoute"]);
 
 app.service("ProductsService", ProductsService);
