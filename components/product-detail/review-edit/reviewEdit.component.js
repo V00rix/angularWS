@@ -29,7 +29,7 @@
     
   }
 
-  app.component('wsReviewEdit', {
+  angular.module("app").component('wsReviewEdit', {
     templateUrl: './components/product-detail/review-edit/reviewEdit.template.html',
     controller: ReviewEditController,
     bindings: {

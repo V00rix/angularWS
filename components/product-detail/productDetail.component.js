@@ -51,7 +51,7 @@
     };
   };
 
-  app.component('wsProductDetail', {
+  angular.module("app").component('wsProductDetail', {
     templateUrl: './components/product-detail/productDetail.template.html',
     controller: ProductDetailController,
   });

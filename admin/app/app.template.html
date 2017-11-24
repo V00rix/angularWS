@@ -1,0 +1,34 @@
+<!doctype html>
+<html ng-app="app">
+<head>      
+	<title>Admin Page</title>          
+	<meta charset="utf-8" />
+	<meta name="description" content="My angular WebShop">
+	<meta name="keywords" content="WebShop">
+	<meta name="author" content="Vladyslav Yazykov">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Styles -->
+	<link rel="stylesheet" href="../styles.css">
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Scripts -->
+	<!-- Angular -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
+
+	<!-- Main Application Config -->
+	<script src="./app/app.js"></script>
+
+	<!-- Components -->
+	<script src="./app/admin/admin.component.js"></script>
+
+	<!-- Models -->
+	<script src="../models/product.model.js"></script>
+</head>
+<body>
+	<!-- Main View -->
+	<div ng-view></div>
+</body>
+</html>

@@ -15,7 +15,7 @@
 		}
 	}
 
-	app.component('wsHeader', {
+	angular.module("app").component('wsHeader', {
 		templateUrl: './components/header/header.template.html',
 		controller: HeaderController,
 	});

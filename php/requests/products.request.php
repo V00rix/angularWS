@@ -16,20 +16,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	echo $products;
 }
 else if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-	// check for permissions
-	if ($checkAdmin()) {
-		// decode products from request
-		$params = json_decode(file_get_contents('php://input'));
-		// put products file
-		unlink($filePath);
-		file_put_contents($filePath, json_encode($params));
-		header("HTTP/1.1 240 Success");
-		echo 'Success';
-	}
-	else {
-		header("HTTP/1.1 401 Unauthorized");
-		echo "No permissions to modify products.";
-	}
+	print_r($SESSION);
+	// // check for permissions
+	// if ($GLOBALS['foo']) {
+	// 	// decode products from request
+	// 	$params = json_decode(file_get_contents('php://input'));
+	// 	// put products file
+	// 	unlink($filePath);
+	// 	file_put_contents($filePath, json_encode($params));
+	// 	header("HTTP/1.1 240 Success");
+	// 	echo 'Success';
+	// }
+	// else {
+	// 	header("HTTP/1.1 401 Unauthorized");
+	// 	echo "No permissions to modify products.";
+	// }
 };
 
 ?>

@@ -35,7 +35,7 @@
     }
   }
 
-  app.component('wsReview', {
+  angular.module("app").component('wsReview', {
     templateUrl: './components/product-detail/review/review.template.html',
     controller: ReviewController,
     bindings: {

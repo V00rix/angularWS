@@ -18,8 +18,24 @@
 	margin-top: 60px;
 }
 
+/* ws-lowered */
+.ws-lowered-60 {
+	margin-top: 60px;
+}
+.ws-lowered-50 {
+	margin-top: 50px;
+}
+.ws-lowered-40 {
+	margin-top: 40px;
+}
+.ws-lowered-30 {
+	margin-top: 30px;
+}
 .ws-lowered-20 {
 	margin-top: 20px;
+}
+.ws-lowered-10 {
+	margin-top: 10px;
 }
 
 .ws-max-height-400 {

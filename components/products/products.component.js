@@ -13,11 +13,12 @@
     }
   }
 
-  app.component('wsProducts', {
+  angular.module("app").component('wsProducts', {
     templateUrl: './components/products/products.template.html',
     controller: ProductsController,
     bindings: {
       products: '<',
       onProduct: '&'
     }
-  })})();
+  })
+})();
