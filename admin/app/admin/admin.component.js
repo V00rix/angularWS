@@ -11,6 +11,13 @@
         $ctrl.editing = false;
 
         $ctrl.$onInit = function() {
+            $http.get("../php/requests/products.request.php").then(
+                (res) => {
+                    $ctrl.products = res.data;
+                },
+                (res) => {
+                    console.error(res);
+                });
         }
 
         $ctrl.saveProducts = function() {
@@ -65,10 +72,7 @@
     }
 
     angular.module("app").component('wsAdmin', {
-       templateUrl: './app/admin/admin.template.html',
-       controller: AdminController,
-       bindings: {
-          products: '<'
-      }
-  });
+     templateUrl: './app/admin/admin.template.html',
+     controller: AdminController,
+ });
 })();

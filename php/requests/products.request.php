@@ -12,11 +12,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	header('Content-Type: application/json');
 	// get products from file
 	header("HTTP/1.1 200 Success");
-	$products = file_get_contents($filePath);
-	echo $products;
+	$data = file_get_contents($filePath);
+	echo $data;
 }
 else if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
-	print_r($SESSION);
+	try {
+		header("HTTP/1.1 200 Internal Server Error");
+		echo 'key';
+		// print_r($SESSION);
+	} catch (Exception $e) {		
+		header("HTTP/1.1 500 Internal Server Error");
+		echo $e;
+	}
 	// // check for permissions
 	// if ($GLOBALS['foo']) {
 	// 	// decode products from request

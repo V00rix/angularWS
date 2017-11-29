@@ -25,9 +25,9 @@
         ctrl.reviewAdded({review: review});
       }
     };
-
-    
   }
+
+  ReviewEditController.$inject = ["$scope", "LoginService"];
 
   angular.module("app").component('wsReviewEdit', {
     templateUrl: './components/product-detail/review-edit/reviewEdit.template.html',

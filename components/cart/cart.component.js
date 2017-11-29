@@ -59,6 +59,8 @@
     }
   }
 
+  CartController.$inject = ["$scope", "ProductsService"];
+
   angular.module("app").component('wsCart', {
     templateUrl: './components/cart/cart.template.html',
     controller: CartController

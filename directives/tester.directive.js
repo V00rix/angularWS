@@ -39,6 +39,8 @@
             }
         }
     };
+    
+    testerDirective.$inject = [];
 
     angular.module("app").directive("tester", testerDirective);
 })();

@@ -13,6 +13,8 @@
     }
   }
 
+  ProductsController.$inject = ["$scope", "ProductsService"];
+
   angular.module("app").component('wsProducts', {
     templateUrl: './components/products/products.template.html',
     controller: ProductsController,

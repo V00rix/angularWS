@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="./app/users/users.styles.css">
+<div class="container ws-lowered-30">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 text-center">
+					<h2>Users</h2>
+					<div class="list-group text-left">
+						<a ng-repeat="user in $ctrl.users" class="list-group-item"
+						ng-click="$ctrl.UserSelected($index)">
+						{{user.username}}
+					</a>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 text-center">
+				<h2>Edit</h2>
+				<div ng-if="$ctrl.selectedUser === null">
+					<button type="button" class="btn btn-default" ng-click="$ctrl.newUser()">Add User</button>
+				</div>
+				<form ng-submit="$ctrl.editConfirmed(form.$valid)" name="form" ng-if="$ctrl.selectedUser" class="text-left" novalidate>
+					<ul class="list-group">
+						<li class="list-group-item ws-form-data-fixed">
+							<div class="form-group">
+								<label for="usr">Username: {{$ctrl.selectedUser.username}}</label>
+								<input ng-model="$ctrl.selectedUser.username" type="text" name="username" class="form-control" 
+								id="usr" required minlength="4" maxlength="12">
+								<p class="ws-warn-label" ng-show="form.username.$error.required">Username cannot be empty</p>
+								<p class="ws-error-label" ng-show="form.username.$error.minlength || form.username.$error.minlength">Username length should be at least 4 charachters long</p>
+							</div>
+							<div class="form-group">
+								<label for="usr">Password: {{$ctrl.selectedUser.password}}</label>
+								<input ng-model="$ctrl.selectedUser.password" type="text" name="password" class="form-control" 
+								id="usr" required minlength="8" maxlength="16">
+								<p class="ws-warn-label" ng-show="form.password.$error.required">Password cannot be empty</p>
+								<p class="ws-error-label" ng-show="form.password.$error.minlength || form.password.$error.minlength">Password length should be at least 8 charachters long</p>
+							</div>
+							<li class="list-group-item">
+								<button type="submit" class="btn btn-default">Save</button>
+								<button type="button" class="btn btn-default" ng-click="$ctrl.editCanceled()">Cancel</button>
+								<button type="button" class="btn btn-danger" ng-click="$ctrl.deleteUser()">Delete</button>
+							</li>
+						</ul>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

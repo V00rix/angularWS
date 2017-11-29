@@ -15,6 +15,8 @@
 		}
 	}
 
+	HeaderController.$inject = ["$scope", "ProductsService", "LoginService"];
+
 	angular.module("app").component('wsHeader', {
 		templateUrl: './components/header/header.template.html',
 		controller: HeaderController,

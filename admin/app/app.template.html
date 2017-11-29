@@ -16,19 +16,21 @@
 	<!-- Scripts -->
 	<!-- Angular -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.min.js"></script>
 
 	<!-- Main Application Config -->
 	<script src="./app/app.js"></script>
 
 	<!-- Components -->
 	<script src="./app/admin/admin.component.js"></script>
+	<script src="./app/users/users.component.js"></script>
 
 	<!-- Models -->
 	<script src="../models/product.model.js"></script>
+	<script src="../admin/app/models/user.model.js"></script>
 </head>
 <body>
 	<!-- Main View -->
-	<div ng-view></div>
+	<ws-admin></ws-admin>
+	<ws-users></ws-users>	
 </body>
 </html>

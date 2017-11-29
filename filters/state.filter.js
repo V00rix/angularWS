@@ -26,6 +26,8 @@
 			return out;
 		};
 	};
+	
+	stateFilter.$inject = [];
 
 	angular.module("app").filter("state", stateFilter);
 })();
