@@ -2,58 +2,62 @@
 	"use strict";
 
 	var LoginController = function ($scope, HttpService, LoginService) {
-		var ctrl = this;
+		var $ctrl = this;
 
-		ctrl.username = "";
-		ctrl.password = "";
+		$ctrl.username = "";
+		$ctrl.password = "";
 
-		ctrl.login = function(valid) {
-			if (valid && ctrl.badUsername === 'found') {
-				HttpService.login(ctrl.username, ctrl.password).then(
-					(result) => {
-						console.log("Logged in.");
-					// enter loged in state
-					LoginService.currentUser = new User(ctrl.username);
-					ctrl.onLogin();
-				},
-				(response) => {
-					if (response.status === 900) {
-						console.warn("Login failure: Username '" + ctrl.username + "' was not found.");
-					} 
-					else if(response.status === 901) {
-						console.warn("Login failure: wrong password");
-						ctrl.badPassword = true;
-					}
-					else {						
-						console.warn("Unhandled server error!", response);
-					}
-				});
-			}
-		}
+    	// error statuses
+    	$ctrl.usernameFound = null;
+    	$ctrl.emailNotFree = null;
+    	$ctrl.badPassword = null;
 
-		ctrl.checkUsername = function(form) {
-			return form.username.$error.required && (form.$submitted || form.username.$touched);
-		}
+    	$ctrl.login = function(valid) {
+    		if (valid) {
+    			let requestConfig = {
+    				username: $ctrl.username, 
+    				password: $ctrl.password, 
+    				successCallback: () => { 
+    					LoginService.onLoggedIn($ctrl.username);
+    				},
+    				passwordCallback: (status) => {
+    					if (!status) 
+    						$ctrl.badPassword = true;
+    					else
+    						$ctrl.badPassword = false;
+    				}
+    			};  
+    			LoginService.checkCredentials(requestConfig);
+    		}
+    	}
 
-		ctrl.register =  function() {
+    	$ctrl.checkUsername = function(valid) {
+    		if (valid) {  
+    			$ctrl.usernameFound = null;
+        		// some timeout to prevent fast dis-|reappearing
+        		let requestConfig = {
+        			username: $ctrl.username, 
+        			usernameCallback: function(status) {
+        				if (status) {
+        					$ctrl.usernameFound = true;
+        				}
+        				else 
+        					$ctrl.usernameFound = false;
+        			}
+        		};  
+        		LoginService.checkCredentials(requestConfig);
+        	}
+        }
 
-		}
+        $ctrl.register =  function() {
+        	LoginService.onRegistrationStart();
+        }
+    }
 
-		ctrl.findUsername = function() {
-			ctrl.badUsername = 'searching';
-			HttpService.findUsername(ctrl.username).then(
-				(result) => { ctrl.badUsername = 'found'; }, 
-				() => { ctrl.badUsername = true; });
-		}
-	}
+    LoginController.$inject = ["$scope", "HttpService", "LoginService"];
 
-	LoginController.$inject = ["$scope", "HttpService", "LoginService"];
-
-	angular.module("app").component('wsLogin', {
-		templateUrl: './components/login/login.template.html',
-		controller: LoginController,
-		bindings: {
-			onLogin: "&"
-		}
-	});
+    angular.module("app").component('wsLogin', {
+    	templateUrl: './components/login/login.template.html',
+    	controller: LoginController,
+    });
 })();

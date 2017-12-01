@@ -8,14 +8,27 @@ if ( !file_exists("../../app_data") )
 	mkdir("../../app_data");
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-	// set responce header
-	header('Content-Type: application/json');
-	// get products from file
-	header("HTTP/1.1 200 Success");
-	$data = file_get_contents($filePath);
-	echo $data;
+	try {
+		session_start();
+		// admin rights are required to view users list
+		if (isset($_SESSION['admin'])) {
+			header('Content-Type: application/json');
+			header("HTTP/1.1 200 Success");
+			// get products from file
+			$data = file_get_contents($filePath);
+			echo $data;
+		}
+		else {	
+			header("HTTP/1.1 401 Unauthorized");
+			echo "No permissions view users data.";
+		}
+	} catch (Exception $e) {		
+		header("HTTP/1.1 500 Internal Server Error");
+		echo $e->getMessage();
+	}
+
 }
-else if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	try {
 		// check for permissions
 		if (true) {
@@ -35,20 +48,6 @@ else if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
 		header("HTTP/1.1 500 Internal Server Error");
 		echo $e;
 	}
-	// // check for permissions
-	// if ($GLOBALS['foo']) {
-	// 	// decode products from request
-	// 	$params = json_decode(file_get_contents('php://input'));
-	// 	// put products file
-	// 	unlink($filePath);
-	// 	file_put_contents($filePath, json_encode($params));
-	// 	header("HTTP/1.1 240 Success");
-	// 	echo 'Success';
-	// }
-	// else {
-	// 	header("HTTP/1.1 401 Unauthorized");
-	// 	echo "No permissions to modify products.";
-	// }
 };
 
 ?>

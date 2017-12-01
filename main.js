@@ -19,6 +19,10 @@
         {
             template: '<ws-cart></ws-cart>'
         })
+        .when("/registration",
+        {
+            template: '<ws-registration></ws-registration>'
+        })
         .when("/product-detail/:productName?", {
             template: '<ws-product-detail></ws-product-detail>',
             resolve: { 

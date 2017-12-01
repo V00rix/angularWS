@@ -21,7 +21,7 @@
         }
 
         $ctrl.saveProducts = function() {
-            $http.put("../php/requests/products.request.php", $ctrl.products).then(
+            $http.post("../php/requests/products.request.php", $ctrl.products).then(
                 (res) => {
                     console.log(res);
                 },

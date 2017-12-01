@@ -3,11 +3,25 @@
   <form ng-submit="$ctrl.login(form.$valid)" name="form" novalidate>
     <div class="form-group">
       <label for="username">Username</label>
-      <input type="text" class="form-control" name="username" id="username" ng-model="$ctrl.username" placeholder="Username" required="" ng-change="$ctrl.findUsername()" ng-model-options="{ debounce: 300 }">
-      <p class="ws-warn-label" ng-show="$ctrl.checkUsername(form)">Please enter username</p>
-      <p class="ws-error-label" ng-if="$ctrl.username && $ctrl.badUsername === true">{{'User «' + $ctrl.username + '» was not found'}}</p>
-      <p class="ws-success-label" ng-if="$ctrl.badUsername === 'found'">{{'User «' + $ctrl.username + '» found'}}</p>
-      <p class="ws-warn-label" ng-if="$ctrl.badUsername === 'searching'">'Searching...'</p>
+      <input type="text" class="form-control" name="username" id="username" ng-model="$ctrl.username" placeholder="Username" required="" ng-change="$ctrl.checkUsername(form.username.$valid)" ng-model-options="{ debounce: 300 }" minlength="4" maxlength="12">
+      <!-- Warnings -->
+      <div class="ws-warnings">
+        <p class="ws-warn-label" ng-show="form.username.$error.required && (form.$submitted || form.username.$touched)">
+          Please enter username
+        </p>
+        <!-- Asyng validators -->
+        <div ng-show="$ctrl.username">  
+          <p class="ws-success-label" ng-if="$ctrl.usernameFound === true">
+            «{{$ctrl.username}}» was found!
+          </p>
+          <p class="ws-error-label" ng-if="$ctrl.usernameFound === false">
+            Username «{{$ctrl.username}}» was not found
+          </p>
+          <p class="ws-warn-label" ng-if="$ctrl.usernameFound === null">
+            Searching...
+          </p>
+        </div>
+      </div>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
@@ -18,6 +32,6 @@
       </div>
     </div>
     <button type="submit" class="btn btn-primary ws-full-width ws-button-big">Login</button>
-    <a href="" class="ws-simple-link" ng-click="$ctrl.register()">Register</a>
+    <a href="#!registration" class="ws-simple-link" ng-click="$ctrl.register()">Register</a>
   </form>
 </div>

@@ -12,5 +12,13 @@ button {
 }
 
 div {
+
+}
+
+.ws-error-header {
 	
+}
+
+.ws-error-message {
+	color: red;	
 }

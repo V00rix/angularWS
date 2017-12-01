@@ -17,11 +17,15 @@
       <!-- shown only if current user is admin -->
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#!cart">Cart  <span class="badge">{{ $ctrl.cartProducts.fullLength }}</span></a></li>
-        <li ng-if="$ctrl.getCurrentUser()"><a class="ws-cursor-default" href=""><span class="glyphicon glyphicon-user ws-user-glyphicon" aria-hidden="true"></span>{{ $ctrl.getCurrentUser().username }}</a></li>
-        <!-- <li ng-if="false"><a href="#!admin">Admin</a></li> -->
-        <li><a ng-click="$ctrl.displayLogin = !$ctrl.displayLogin">Login {{$ctrl.getCurrentUser() ? ' to another account' : ''}}</a></li>
+        <li ng-if="$ctrl.getCurrentUser()"><a class="ws-cursor-default" href="" ng-mouseenter="$ctrl.displayUserData = true"><span class="glyphicon glyphicon-user ws-user-glyphicon" aria-hidden="true"></span>{{ $ctrl.getCurrentUser().username }}</a></li>
+        <div class="ws-user-data text-center" ng-if="$ctrl.displayUserData">
+          <p>{{ $ctrl.getCurrentUser().username }}</p>
+          <a ng-click="$ctrl.logout()">Logout</a>
+          <a ng-click="$ctrl.deleteAccount()">Delete account</a>
+        </div>
+        <li ng-if="!$ctrl.getCurrentUser()"><a ng-click="$ctrl.displayLogin = !$ctrl.displayLogin">Login</a></li>
       </ul>
     </div>
   </div>
 </nav>
-<ws-login ng-if="$ctrl.displayLogin" on-login="$ctrl.displayLogin = false"></ws-login>
+<ws-login ng-if="$ctrl.displayLogin"></ws-login>

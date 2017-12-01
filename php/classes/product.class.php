@@ -46,25 +46,6 @@ class Product
 	}
 
     // destructor
-	function __destruct() {
-
-	}
-
-	// methods
-	public function __toString() {
-		$res = "<div style=\"
-		background: #d8932e57; 
-		min-width: 200px; 
-		width: 20%;
-		overflow: hidden; 
-		padding: 20px;
-		display: inline-block;
-		margin: 10px;\"><h2>Product</h2>"; 
-		foreach ($this as $key => $value) {
-			$res .= "<br><b>" . $key . ":</b> " . $value;
-		};
-		$res .= "</div>";
-		return $res; 
-	}
+	function __destruct() {}
 }
 ?>

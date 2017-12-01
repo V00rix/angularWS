@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="./components/products/products.styles.css">
+<div class="container ws-lowered-60" >
+	<div class="row">
+		<div class="col-xs-12">
+			<h1 class="text-center">Register</h1>
+			<form ng-submit="$ctrl.register(form.$valid)" name="form" novalidate>
+				<div class="form-group">
+					<label for="username">Username</label>
+					<input type="text" class="form-control" name="username" id="username" ng-model="$ctrl.username" placeholder="Username" required="" ng-change="$ctrl.checkUsername(form.username.$valid)" ng-model-options="{ debounce: 300 }" minlength="4" maxlength="12">
+					<div class="ws-warnings">
+						<!-- Warnings -->
+						<p class="ws-warn-label" ng-show="form.username.$error.required && (form.$submitted || form.username.$touched)">
+							Username cannot be empty
+						</p>
+						<p class="ws-error-label" ng-show="form.username.$error.minlength">
+							Username length should be at least 4 charachters long
+						</p>
+						<!-- Asyng validators -->
+						<div ng-show="$ctrl.username">						
+							<p class="ws-success-label" ng-if="$ctrl.usernameNotFree === false">
+								Username «{{$ctrl.username}}» is available
+							</p>
+							<p class="ws-error-label" ng-if="$ctrl.usernameNotFree === true">
+								Username «{{$ctrl.username}}» is not available
+							</p>
+							<p class="ws-warn-label" ng-if="$ctrl.usernameNotFree === null">
+								Searching...
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<!-- TODO: create async validators -->
+					<label for="email">Email</label>
+					<input type="email" class="form-control" name="email" id="email" ng-model="$ctrl.email" placeholder="Email" required="" ng-change="$ctrl.checkEmail(form.email.$valid)" ng-model-options="{ debounce: 300 }" pattern="^[^ ]+@[^ ]+\.[^ ]+$">
+					<!-- Warnigns -->
+					<div class="ws-warnings">
+						<div ng-show="form.email.$touched">
+							<p class="ws-error-label" ng-show="form.email.$error.pattern">
+								Invalid email format
+							</p>
+							<p class="ws-error-label" ng-show="form.email.$error.required">
+								Email is required
+							</p>
+						</div>
+						<!-- Asyng validators -->
+						<div ng-show="$ctrl.email">	
+							<p class="ws-warn-label" ng-if="$ctrl.emailNotFree === null">
+								Searching...
+							</p>
+							<p class="ws-error-label" ng-if="$ctrl.emailNotFree === true">
+								Email «{{$ctrl.email}}» is not available
+							</p>
+							<p class="ws-success-label" ng-if="$ctrl.emailNotFree === false">
+								Email «{{$ctrl.email}}» is available
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="password">Password</label>
+					<input type="password" class="form-control" name="password" id="password" ng-model="$ctrl.password" placeholder="Password" required minlength="8" maxlength="16">
+					<!-- Warnings -->
+					<div class="ws-warnings">
+						<div ng-show="form.$submitted">
+							<p class="ws-warn-label" ng-show="form.password.$error.required">
+								Password cannot be empty
+							</p>
+							<p class="ws-error-label" ng-show="form.password.$error.minlength">
+								Password length should be at least 8 charachters long
+							</p>
+						</div>
+					</div>
+				</div>				
+				<div class="form-group">
+					<label for="passwordSecond">Re-enter password</label>
+					<input type="password" class="form-control" name="passwordSecond" id="passwordSecond" ng-model="$ctrl.passwordSecond" placeholder="Re-enter password" required maxlength="16" match="password">
+					<!-- Warnings -->
+					<p class="ws-warn-label" ng-show="form.passwordSecond.$error.match">
+						Passwords do not match
+					</p>
+					<p class="ws-success-label" ng-show="!(form.passwordSecond.$error.match)">
+						Passwords match
+					</p>
+				</div>
+				<button type="submit" class="btn btn-primary ws-full-width ws-button-big">Register</button>
+			</form>
+		</div>
+	</div>
+</div>

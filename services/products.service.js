@@ -52,6 +52,16 @@
 					console.error("Error!", res.statusText + "\n" , res.data);
 				});
 		}
+
+		this.updateProduct = function(product, review) {
+			return HttpService.put(this.products.indexOf(product), review).then(
+				(res) => {
+					console.log(res);
+				},
+				(res) => {
+					console.log(res);
+				});
+		}
 	}
 
 	ProductsService.$inject = ['HttpService', '$q'];

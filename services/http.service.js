@@ -10,18 +10,29 @@
 		}
 
 		this.post = function(products) {		
-			console.log("Sending PUT...");
+			console.log("Sending POST...");
 			return $http.put(this.baseUrl + "products.request.php", products);
 		}
 
-		this.login = function(username, password) {
-			console.log("Loging in " + username  + ", " + password + "...");
-			return $http.post(this.baseUrl +  "login.request.php", {username: username, password: password});
-		} 
+		this.put = function(productId, review) {		
+			console.log("Sending PUT...");
+			return $http.put(this.baseUrl + "products.request.php", {productId: productId, review: review});
+		}
 
-		this.findUsername = function(username) {
-			return $http.put(this.baseUrl +  "login.request.php", {username: username});
-		} 
+		this.getCredentialsStatus = function(username, email, password) {
+			console.log("Getting credentials status.");
+			return $http.post(this.baseUrl +  "login.request.php", {username: username, email: email, password: password});
+		}
+
+		this.register = function(username, email, password) {
+			console.log("Registering new user.");
+			return $http.post(this.baseUrl +  "register.request.php", {username: username, email: email, password: password});			
+		}
+
+		this.logout = function() {
+			console.log("Logging out.");
+			return $http.get(this.baseUrl +  "logout.request.php");			
+		}
 	}
 
 	HttpService.$inject = ['$http'];

@@ -12,9 +12,7 @@
         $ctrl.$onInit = function() {
             $http.get("../php/requests/users.request.php").then(
                 (res) => {
-                    console.log(res.data);
                     $ctrl.users = res.data || [];
-                    console.log($ctrl.users);
                 },
                 (res) => {
                     console.error(res);
@@ -22,7 +20,7 @@
         }
 
         $ctrl.saveUsers = function() {
-            $http.put("../php/requests/users.request.php", $ctrl.users).then(
+            $http.post("../php/requests/users.request.php", $ctrl.users).then(
                 (res) => {
                     console.log(res);
                 },

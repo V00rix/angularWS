@@ -2,16 +2,24 @@
 	"use strict";
 
 	var HeaderController = function ($scope, ProductsService, LoginService) {
-		var ctrl = this;
+		var $ctrl = this;
 
-		ctrl.displayLogin = false;
+		$ctrl.displayLogin = false;
+		$ctrl.displayUserData = false;
 
-		ctrl.$onInit = function() {
-			ctrl.cartProducts = ProductsService.cartProducts;
+		$ctrl.$onInit = function() {
+			$ctrl.cartProducts = ProductsService.cartProducts;
+			LoginService.subscribe($scope, () => {
+				$ctrl.displayLogin = false;
+			});
 		}
 
-		ctrl.getCurrentUser = function () {
+		$ctrl.getCurrentUser = function () {
 			return LoginService.currentUser;
+		}
+		
+		$ctrl.logout = function() {
+			LoginService.logout();
 		}
 	}
 

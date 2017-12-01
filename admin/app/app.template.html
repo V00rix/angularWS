@@ -30,7 +30,13 @@
 </head>
 <body>
 	<!-- Main View -->
-	<ws-admin></ws-admin>
-	<ws-users></ws-users>	
+	<div class="container ws-lowered-30">
+		<ws-admin></ws-admin>
+		<ws-users></ws-users>
+		<hr>
+		<div class="row text-center">
+			<button class="btn btn-default" type="button" onclick="window.location.href = '../php/requests/logout.php';">Logout</button>	
+		</div>
+	</div>
 </body>
 </html>
