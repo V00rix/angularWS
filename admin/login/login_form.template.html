@@ -2,13 +2,13 @@
 <html>
 <head>
 	<title>WebShop Admin</title>
-	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="./login/styles.css">
 </head>
 <body>
-	<form action="index.php" method="POST">
-		<label for="username">Username</label><br />
-		<input id="username" type="text" name="username" value="" placeholder="username" /><br /><br />
-		<label for="password">Password</label><br />
-		<input id="password" type="password" name="password" value="" placeholder="password" /><br />
-		<button type="submit">Submit</button>
-	</form>
+	<form class="ws-admin-form" action="index.php" method="POST">
+		<label class="ws-admin-label" for="username">Username</label>
+		<input class="ws-admin-input" id="username" type="text" name="username" value="" placeholder="username" />
+		<label class="ws-admin-label" for="password">Password</label>
+		<input class="ws-admin-input" id="password" type="password" name="password" value="" placeholder="password" />
+		<br />
+		<button class="ws-admin-button" type="submit">Submit</button>

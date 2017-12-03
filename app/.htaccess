@@ -1,0 +1,2 @@
+ErrorDocument 404 /angularWS/app/index.html
+ErrorDocument 403 /angularWS/errors/403.php

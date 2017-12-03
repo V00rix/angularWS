@@ -4,6 +4,7 @@ class User {
 	public $username;
 	public $email;
 	public $password;
+	public $history = [];
 
 	function __construct($username, $email, $password)
 	{
@@ -12,9 +13,5 @@ class User {
 		$this->password = $password;
 	}
 	// history of previous transactions
-	// public $history;
-	// remember current cart in case of front-end crash etc.
-	// public $currentCart; // = products[] {}
-	// some methods
 }
 ?>

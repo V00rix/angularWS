@@ -1,0 +1,123 @@
+/* Global styles */
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+* {
+	font-family: roboto;
+}
+
+.title {
+	font-size: 40px;
+	color: red;
+}
+
+.ws-min-height-150 {
+	min-height: 150px;
+}
+
+.ws-lowered-60 {
+	margin-top: 60px;
+}
+
+/* ws-lowered */
+.ws-lowered-60 {
+	margin-top: 60px;
+}
+.ws-lowered-50 {
+	margin-top: 50px;
+}
+.ws-lowered-40 {
+	margin-top: 40px;
+}
+.ws-lowered-30 {
+	margin-top: 30px;
+}
+.ws-lowered-20 {
+	margin-top: 20px;
+}
+.ws-lowered-10 {
+	margin-top: 10px;
+}
+
+.ws-max-height-400 {
+	max-height: 400px;
+}
+
+.ws-resize-vertical-strict {
+	resize:vertical;
+	overflow: hidden;
+}
+
+.ws-full-width {
+	width: 100%;
+}
+
+.ws-margin-bottom-15 {
+	margin-bottom: 15px;
+}
+
+.ws-error-label {
+	color: red;
+	margin: 5px 2px;
+}
+
+.ws-warn-label {
+	color: orange;
+	margin: 5px 2px;
+}
+
+.ws-success-label {
+	color: #3ecf3e;
+	margin: 5px 2px;
+}
+
+.ws-cursor-default {
+	cursor: default;
+}
+
+/* doesn't look like a link but still is a link */
+.ws-not-a {
+	cursor: default;
+	color: black;	
+}
+.ws-not-a:hover {
+	color: black;	
+	text-decoration: none;
+}
+.ws-not-a:focus {
+	color: black;
+	text-decoration: none;	
+}
+
+.ws-overflow-hidden {
+	overflow: hidden;
+}
+
+a {
+	cursor: pointer;
+}
+
+.badge {
+	margin-left: 5px;
+}
+
+.ws-important {
+    height: 70px;
+    text-align: center;
+    position: relative;
+    margin: -30px -15px;
+    z-index: 10;
+    font-size: 20px;
+    background: linear-gradient(rgba(0, 0, 0, 0.54), rgba(255, 255, 255, 0));
+    padding: 10px 10px;
+    color: white;
+    cursor: default;
+}
+
+.ws-important-text {
+    position: absolute;
+    width: 100%;
+    font-size: 2em;
+    margin: 20px -10px;
+    color: #ffffff;
+    text-shadow: 0 0 11px #000000;
+}

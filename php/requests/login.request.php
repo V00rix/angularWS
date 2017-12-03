@@ -1,8 +1,12 @@
-<?php 
-
+<?php
 // includes
-include('../helpers/login.helper.php');
-include('../classes/exceptions.php');
+include_once '../classes/exceptions.php';
+include '../helpers/login.helper.php';
+
+// set file path
+$filePath = "../../app_data/users.json";
+if ( !file_exists("../../app_data") )
+	mkdir("../../app_data");
 
 /**
 * Response
@@ -30,20 +34,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$params = json_decode(file_get_contents('php://input'));
 
 		// try to read users from file 
-		if ( file_exists("../../app_data/users.json") )
-			$users = json_decode(file_get_contents("../../app_data/users.json"));
-		else 
+		if ( !file_exists($filePath) )
 			throw new fileNotFoundException("No users file found");
+		$users = json_decode(file_get_contents($filePath));
 
 		$response->emailStatus = !isset($params->email) || emailFree($users, $params->email);
 
 		try {
-
 			// try to login as user, auto logout after 10 minutes
 			login($users, $params->username, $params->password, 'user', 600, 
 				function() use(&$response) {
 					header("HTTP/1.1 200 Success");
-					 $response->usernameStatus = $response->passwordStatus = true;
+					$response->usernameStatus = $response->passwordStatus = true;
 				},
 				function($e) {
 					throw $e;
@@ -65,6 +67,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		header("HTTP/1.1 500 Internal Server Error");
 		echo $e->getMessage();		
 	}
+}
+// gets called to know if the user is already logged in and thus
+else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+	session_start();
+	echo (isset($_SESSION['user']) ? $_SESSION['user'] : null);
 }
 else {	
 	header("HTTP/1.1 405 Method Not Allowed");

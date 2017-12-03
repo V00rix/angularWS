@@ -7,8 +7,8 @@ class Product
 	public $name = "Nameless product";
 	public $description = "No description is available for this product.";
 	public $imageUrl = "http://www.p-etalon.ru/global/images/prod/nophoto.png";
-	public $quantity = 0;
-	public $cost = 0;
+	public $quantity = 1;
+	public $cost = 150;
 	// commentaries from users 
 	public $reviews = null;
 
@@ -29,18 +29,32 @@ class Product
 		$cost = null, $reviews ) {
 		// create new instance
 		$instance = new self();
-		// id container 
-		if (self::$ids == null) {
-			$ids = array(1, 2, 3);
-		};
+
 		// assign params
 		$instance->id = $id;
 		$instance->name = $name ? $name : "Nameless product";
 		$instance->description = $description ? $description : "No description is available for this product.";
 		$instance->imageUrl = $imageUrl ? $imageUrl : "http://www.p-etalon.ru/global/images/prod/nophoto.png";
-		$instance->quantity = $quantity ? $quantity : 0;
-		$instance->cost = $cost ? $cost : 0;
+		$instance->quantity = $quantity ? $quantity : 1;
+		$instance->cost = $cost ? $cost : 150;
 		$instance->reviews = $reviews;
+		// return instance
+		return $instance;
+	}
+
+	// copy constructor
+	public static function from( $another ) {
+		// create new instance
+		$instance = new self();
+		
+		// assign params
+		$instance->id = $another->id;
+		$instance->name = $another->name ? $another->name : "Nameless product";
+		$instance->description = $another->description ? $another->description : "No description is available for this product.";
+		$instance->imageUrl = $another->imageUrl ? $another->imageUrl : "http://www.p-etalon.ru/global/images/prod/nophoto.png";
+		$instance->quantity = $another->quantity ? $another->quantity : 1;
+		$instance->cost = $another->cost ? $another->cost : 150;
+		$instance->reviews = $another->reviews;
 		// return instance
 		return $instance;
 	}

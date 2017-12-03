@@ -8,7 +8,7 @@
 	<meta name="author" content="Vladyslav Yazykov">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Styles -->
-	<link rel="stylesheet" href="../styles.css">
+	<link rel="stylesheet" href="./styles.css">
 
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -21,21 +21,21 @@
 	<script src="./app/app.js"></script>
 
 	<!-- Components -->
-	<script src="./app/admin/admin.component.js"></script>
-	<script src="./app/users/users.component.js"></script>
+	<script src="./app/components/products/products.component.js"></script>
+	<script src="./app/components/users/users.component.js"></script>
 
 	<!-- Models -->
-	<script src="../models/product.model.js"></script>
-	<script src="../admin/app/models/user.model.js"></script>
+	<script src="./app/models/product.model.js"></script>
+	<script src="./app/models/user.model.js"></script>
 </head>
 <body>
 	<!-- Main View -->
 	<div class="container ws-lowered-30">
-		<ws-admin></ws-admin>
+		<ws-products></ws-products>
 		<ws-users></ws-users>
 		<hr>
 		<div class="row text-center">
-			<button class="btn btn-default" type="button" onclick="window.location.href = '../php/requests/logout.php';">Logout</button>	
+			<button class="btn btn-default" type="button" onclick="window.location.href = '../php/requests/logout.request.php';">Logout</button>	
 		</div>
 	</div>
 </body>

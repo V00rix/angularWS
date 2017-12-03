@@ -18,21 +18,37 @@ function login($usersList, $username, $password, $permissionKey, $expiryTimeSeco
 	try {
 		// validate credentials
 		searchUserPassword($usersList, $username, $password);
-		// permissions on current session
-		$_SESSION[$permissionKey] = true;
+		// set permissions on current session
+		$_SESSION[$permissionKey] = $username;
+		// set session expiry duration
+		$_SESSION['expiry'] = $expiryTimeSeconds;
+		// update last activity time stamp	
+		$_SESSION['LAST_ACTIVITY'] = time();
+		// call success
 		$successFunction();
 	} catch (loginFailedException $e) {
 		$exceptionFunction($e);
 	}
 	finally {
+		
+	}
+}
+
+/**
+ * 
+ * @return {username} [description]
+ */
+function sessionNotExpired() {
 		// Destroy session if last activity was more then 5 minutes ago
-		if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $expiryTimeSeconds)) {
+		if (!isset($_SESSION['expiry']) || (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $_SESSION['expiry']))) {
 			session_unset();
 			session_destroy();
+			throw new sessionExpiredException("Session Has Expired");
 		}
-		// update last activity time stamp	
-		$_SESSION['LAST_ACTIVITY'] = time(); 
-	}
+		else {
+			// update last activity time stamp	
+			$_SESSION['LAST_ACTIVITY'] = time();
+		}
 }
 
 /**
@@ -60,9 +76,8 @@ function searchUserPassword($dataList, $username, $password) {
 			else 
 				throw new badPasswordException("Wrong password");
 		}
-		else 
-			throw new badUsernameException("Username not found");
 	}
+	throw new badUsernameException("Username not found");
 }
 
 function registrationPossible($dataList, $username, $email) {
@@ -72,5 +87,16 @@ function registrationPossible($dataList, $username, $email) {
 		if ($email === $user->email) 
 			throw new badEmailException("Email is already taken");
 	}
+}
+
+function deleteUser($dataList, $username) {
+	foreach ($dataList as $key => $user) {
+		if ($username === $user->username) {
+			unset($dataList[$key]);
+			return $dataList;
+		}
+	}
+	return $dataList;
+	throw new badUsernameException("Username Not Found");
 }
 ?>
