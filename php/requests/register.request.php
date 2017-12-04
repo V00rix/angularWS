@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 		// write to file
 		unlink($filePath); 
-		file_put_contents($filePath, json_encode($users));
+		file_put_contents($filePath, json_encode((array)$users));
 
 		// send response
 		header("HTTP/1.1 200 Success");		
@@ -130,7 +130,7 @@ else if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
 
 		// write to file
 		unlink($filePath);
-		file_put_contents($filePath, json_encode((array)$users));
+		file_put_contents($filePath, json_encode($users));
 
 		// everything ok
 		header("HTTP/1.1 200 Success");

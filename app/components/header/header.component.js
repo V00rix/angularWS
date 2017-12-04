@@ -5,8 +5,9 @@
 		var $ctrl = this;
 
 		$ctrl.displayLogin = false;
-		$ctrl.displayUserData = false;
+		$ctrl.userDataDisplayed = false;
 		$ctrl.cartProducts = null;
+		$ctrl.timeout = null;
 
 		$ctrl.$onInit = function() {
 			LoginService.subscribe($scope, () => {
@@ -24,7 +25,7 @@
 		}
 
 		$ctrl.deleteAccount = function() {
-			LoginService.deleteAccount();
+			LoginService.deleteAccount().then($ctrl.userDataDisplayed = false);
 		}
 
 		$ctrl.getCurrentUser = function () {
@@ -32,8 +33,20 @@
 		}
 		
 		$ctrl.logout = function() {
-			LoginService.logout();
-			ProductsService.clearCart();
+			LoginService.logout().then($ctrl.userDataDisplayed = false);
+		}
+
+		$ctrl.displayUserData = function() {
+			$ctrl.userDataDisplayed = true;
+			if ($ctrl.timeout)
+				clearTimeout($ctrl.timeout);
+		}
+
+		$ctrl.hideUserData = function() {
+			$ctrl.timeout = setTimeout(()=>{
+				$ctrl.userDataDisplayed = false;
+				$scope.$apply();
+			}, 600);	
 		}
 	}
 

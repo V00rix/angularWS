@@ -1,11 +1,15 @@
-div.ws-cart-image {
+.ws-cart-image {
     position: relative;
-    display: inline !important;
+    display: inline !important;    
+    width: 100%;
 }
 
-img.ws-cart-image {
-    width: 100%;
-    position: relative;
+.ws-cart {
+	color: var(--ws-main-text-color);
+}
+
+.ws-cart-form {
+	color: black;
 }
 
 .ws-col-normalized {

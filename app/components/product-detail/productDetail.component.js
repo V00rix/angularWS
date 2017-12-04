@@ -56,6 +56,10 @@
       var roundedTempNumber = Math.round(number * factor);
       return roundedTempNumber / factor;
     };
+
+    $ctrl.lowQuantity = function(quantity) {
+      return (quantity <= 10 && quantity >  0) ? true : false;
+    }
   };
 
   ProductDetailController.$inject = ["$scope", "$routeParams", "ProductsService"];

@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="./components/header/header.styles.css">
-<nav class="navbar navbar-default navbar-fixed-top my-navbar" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top ws-navbar" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -11,23 +11,24 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="products">Products</a></li>
+        <li><a href="products" ng-click="$ctrl.displayLogin = false">Products</a></li>
         
       </ul>
       <!-- shown only if current user is admin -->
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="cart">Cart  <span class="badge">{{ $ctrl.getFullLength() }}</span></a></li>
-        <li ng-if="$ctrl.getCurrentUser()"><a class="ws-cursor-default" href="" ng-mouseenter="$ctrl.displayUserData = true"><span class="glyphicon glyphicon-user ws-user-glyphicon" aria-hidden="true"></span>{{ $ctrl.getCurrentUser().username }}</a></li>
-        <div class="ws-user-data text-center" ng-if="$ctrl.displayUserData" ng-mouseleave="$ctrl.displayUserData = false">
-          <!-- Popup messages -->
-          <p>{{ $ctrl.getCurrentUser().username }}</p>
-          <a ng-click="$ctrl.logout()">Logout</a><br>
-          <a class="ws-error-label" ng-click="$ctrl.deleteAccount()">Delete account</a>
-        </div>
+        <li><a href="cart" ng-click="$ctrl.displayLogin = false">Cart  <span class="badge">{{ $ctrl.getFullLength() }}</span></a></li>
+        <li ng-if="$ctrl.getCurrentUser()"><a class="ws-cursor-default" href="" ng-mouseenter="$ctrl.displayUserData()"><span class="glyphicon glyphicon-user ws-user-glyphicon" aria-hidden="true"></span>{{ $ctrl.getCurrentUser().username }}</a></li>
         <li ng-if="!$ctrl.getCurrentUser()"><a ng-click="$ctrl.displayLogin = !$ctrl.displayLogin">Login</a></li>
         <li ng-if="!$ctrl.getCurrentUser()"><a href="./registration">Register</a></li>
       </ul>
     </div>
   </div>
-</nav>
-<ws-login ng-if="$ctrl.displayLogin" ng-mouseleave="$ctrl.displayLogin = false"></ws-login>
+  <!-- Popup user data -->
+  <div class="ws-user-data text-right" ng-if="$ctrl.userDataDisplayed" ng-mouseenter="$ctrl.displayUserData()" ng-mouseleave="$ctrl.hideUserData()">
+    <!-- <h4>{{ $ctrl.getCurrentUser().username }}</h4> -->
+    <a class="btn ws-light-color ws-fz-sm" ng-click="$ctrl.logout()">Logout</a>
+    <a class="btn ws-warn-label ws-fz-sm" ng-click="$ctrl.deleteAccount()" >Delete account</a>
+  </div>
+  <!-- <ws-login ng-if="$ctrl.displayLogin" ng-mouseleave="$ctrl.displayLogin = false"></ws-login> -->
+  <ws-login window-closed="$ctrl.displayLogin = false" ng-if="$ctrl.displayLogin"></ws-login>
+</nav>       

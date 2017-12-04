@@ -1,50 +1,45 @@
 <link rel="stylesheet" href="./components/cart/cart.styles.css">
-<div class="container ws-lowered-60">
-	<div class="row">
-		<div class="col-xs-12">
-			<h2 ng-if="!$ctrl.cart.products.length">
-				Your cart is yet empty.
-			</h2>
-			<form ng-if="$ctrl.cart.products.length" ng-submit="$ctrl.orderConfirmed()">
-				<ul class="list-group">
-					<li ng-repeat="product in $ctrl.cart.products" class="list-group-item">
-						<div class="form-inline">
-							<div class="container-fluid">
-								
-								<div class="row">
-
-									<div class="form-group ws-cart-image col-xs-2">
-										<img ng-src="{{product.imageUrl}}" class="ws-cart-image" alt="Description" />
+<br>
+<div class="row ws-cart">
+	<div class="col-xs-12">
+		<h2 ng-if="!$ctrl.cart.products.length">
+			Your cart is yet empty.
+		</h2>
+		<form ng-if="$ctrl.cart.products.length" ng-submit="$ctrl.orderConfirmed()" class="ws-cart-form">
+			<ul class="list-group">
+				<li ng-repeat="product in $ctrl.cart.products" class="list-group-item">
+					<div class="form-inline">
+						<div class="container-fluid ws-no-horizontal-padding">
+							<div class="row">
+								<div class="form-group col-xs-12 col-sm-4">
+									<img ng-src="{{product.imageUrl}}" class="ws-cart-image" alt="Product Image" />
+								</div>
+								<div class="form-group col-xs-12 col-sm-8 text-right">
+									<h3>{{product.name}}</h3>
+									<h4><span class="badge">{{product.quantity}}</span>&nbsp; x &nbsp; {{product.cost}} &nbsp; = &nbsp; {{ product.quantity * product.cost }} &nbsp; czk &nbsp;</h4>
+									<div class="btn-group">
+										<button type="button" class="btn btn-default" ng-click="$ctrl.more(product)">+</button>
+										<button type="button" class="btn btn-default" ng-click="$ctrl.less(product)">-</button>
 									</div>
-									<div class="form-group col-xs-8">
-										<label>{{product.name}}</label>
-									</div>
-									<div class="form-group col-xs-8 text-right">
-										<label for="quantity"><span class="badge">{{product.quantity}}</span>&nbsp; x &nbsp; {{product.cost}} &nbsp; = &nbsp; {{ product.quantity * product.cost }} &nbsp; czk &nbsp;</label>
-										<div class="btn-group">
-											<button type="button" class="btn btn-default" ng-click="$ctrl.more(product)">+</button>
-											<button type="button" class="btn btn-default" ng-click="$ctrl.less(product)">-</button>
-										</div>
-										<button type="button" class="btn btn-default" ng-click="$ctrl.removeProduct($index)">Remove from cart</button>
-									</div>
+									<button type="button" class="btn btn-default" ng-click="$ctrl.removeProduct($index)">Remove from cart</button>
 								</div>
 							</div>
 						</div>
-					</li>
-					<li class="list-group-item">
-						<p>
-							Total: {{ $ctrl.getFullCost() }} czk
-						</p>
-					</li>
-					<li ng-if="$ctrl.getCurrentUser()" class="list-group-item text-right">
-						<button type="submit" class="btn btn-default">Confirm!</button>
-						<button type="button" class="btn btn-default" ng-click="$ctrl.clearCart()">Cancel</button>
-					</li>
-					<li ng-if="!$ctrl.getCurrentUser()" class="list-group-item text-center">
-						<p>Log in to continue</p><br>
-					</li>
-				</ul>
-			</form>
-		</div>
+					</div>
+				</li>
+				<li class="list-group-item">
+					<p>
+						Total: {{ $ctrl.getFullCost() }} czk
+					</p>
+				</li>
+				<li ng-if="$ctrl.getCurrentUser()" class="list-group-item text-right">
+					<button type="submit" class="btn btn-default">Confirm!</button>
+					<button type="button" class="btn btn-default" ng-click="$ctrl.clearCart()">Cancel</button>
+				</li>
+				<li ng-if="!$ctrl.getCurrentUser()" class="list-group-item text-center">
+					<h4 class="ws-warn-label ws-cursor-default">Log in is required to continue</h4>
+				</li>
+			</ul>
+		</form>
 	</div>
 </div>

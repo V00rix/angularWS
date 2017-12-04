@@ -1,0 +1,7 @@
+:root {
+  --ws-main-bg-color: #0f0f0f;
+  --ws-main-border-color: #0f0f0f;
+  --ws-main-text-color: #efefef;
+  --ws-bg-gradient: linear-gradient(225deg, #66075e, #090d41);
+  --ws-bg-img: url("../resources/img/bg.jpg");
+}

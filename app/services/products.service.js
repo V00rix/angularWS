@@ -55,12 +55,12 @@
 		}
 
 		this.clearCart = function() {			
-			for (var product in ProductsService.cartProducts.products) {
-				var pr = ProductsService.products.find(p => p.id === product.id);
+			for (var product of this.cartProducts.products) {
+				var pr = this.products.find(p => p.id === product.id);
 				pr.quantity += product.quantity;
 			}
-			ProductsService.cartProducts.fullLength = 0;
-			ProductsService.cartProducts = [];
+			this.cartProducts.fullLength = 0;
+			this.cartProducts = [];
 		}
 
     	// save temporary cart data

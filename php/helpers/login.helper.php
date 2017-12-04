@@ -90,9 +90,13 @@ function registrationPossible($dataList, $username, $email) {
 }
 
 function deleteUser($dataList, $username) {
+	$i = 0;
 	foreach ($dataList as $key => $user) {
+		$i++;
 		if ($username === $user->username) {
-			unset($dataList[$key]);
+			// var_dump($key);
+			array_splice($dataList, $key, 1);
+			// unset($dataList[$key]);
 			return $dataList;
 		}
 	}

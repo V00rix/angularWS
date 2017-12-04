@@ -10,16 +10,28 @@
 	background-color: white;
 }
 
+.navbar-nav>li>a {
+	font-size: 1.2em;
+}
+
+.navbar-nav>li>a:hover {
+	color: white !important;
+}
+
 .ws-user-glyphicon {
 	margin: 0 5px 0 0;
 }
 
 .ws-user-data {
 	position: absolute;
-    top: 50px;
-    right: 50px;
-    background: #f8f8f8;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px;
+	top: 50px;
+	right: 0;
+	background: #3f3f3f;
+	box-shadow: 0 0 10px;
+}
+
+.ws-navbar {
+	background-color: #3f3f3f;
+	border-color: var(--main-bg-color);
+	/*border-color: #000000;*/
 }

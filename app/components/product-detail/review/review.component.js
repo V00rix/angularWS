@@ -18,15 +18,15 @@
     function reviewColor() {
       switch($ctrl.review.rating) {
         case 1:
-        return '#ff06063d';
+        return 'rgba(192, 24, 24, 0.95)';
         case 2:
-        return '#ff6b065c';
+        return 'rgba(234, 182, 87, 0.95)';
         case 3:
-        return '#b6fff175';
+        return 'rgba(234, 228, 38, 0.95)';
         case 4:
-        return '#eeffe2';
+        return 'rgba(90, 168, 164, 0.95)';
         case 5:
-        return '#dcffc9';
+        return 'rgba(164, 217, 135, 0.95)';
       }
     }
 

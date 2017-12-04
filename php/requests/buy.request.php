@@ -8,6 +8,7 @@ include '../helpers/validator.helper.php';
 // set file path
 $productsFilePath = "../../app_data/products.json";
 $userFilePath = "../../app_data/users.json";
+$changes = "../../app_data/changes.json";
 
 if ( !file_exists("../../app_data") )
 	mkdir("../../app_data");

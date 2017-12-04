@@ -1,17 +1,3 @@
-/*.ws-product-detail-image {
-	width: 100%;
-}
-
-.ws-product-detail-title {
-	font-size: 4.5rem;
-	color: #ff008b;
-	font-weight: 800;
-	letter-spacing: 0.4rem;
-	background: -webkit-linear-gradient(#ff3e93, #4e116d);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-*/
 .ws-col-fixed {
 	position: relative !important;
 }
@@ -22,12 +8,7 @@
 }
 
 .ws-product-buy {
-	text-shadow: 0 0 10px #0006ff;
-	font-size: 2.8rem;
-	cursor: pointer;
-}
-.ws-product-buy:hover {
-	text-shadow: 0 0 20px red;
+    font-size: 2.8rem;
 }
 
 .ws-top-right-absolute {
@@ -43,6 +24,10 @@
 	box-shadow: 0 0 10px #000000b8;
 	border-radius: 5px;
 	padding-bottom: 10px;
+}
+
+.ws-product-detail-image {
+	width: 15px;
 }
 
 .ws-cover {

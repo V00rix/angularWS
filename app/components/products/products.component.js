@@ -2,11 +2,11 @@
   "use strict";
 
   var ProductsController = function ($scope, ProductsService) { 
-    var ctrl = this;
+    var $ctrl = this;
 
-    ctrl.$onInit = function() {};
+    $ctrl.$onInit = function() {};
 
-    ctrl.lowQuantity = function(quantity) {
+    $ctrl.lowQuantity = function(quantity) {
       return (quantity <= 10 && quantity >  0) ? true : false;
     }
   }

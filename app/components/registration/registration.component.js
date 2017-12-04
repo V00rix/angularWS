@@ -64,6 +64,13 @@
           password: $ctrl.password,
           successCallback: function() {
             console.log("Registration succeeded...");
+            LoginService.checkCredentials({
+              username: $ctrl.username,
+              password: $ctrl.password,
+              successCallback: () => {
+                LoginService.userChanged(new User($ctrl.username));
+              }
+            })
             $location.path('/products');
           },
           failureCallback: function(error) {

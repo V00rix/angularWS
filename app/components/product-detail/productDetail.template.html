@@ -1,37 +1,44 @@
 <link rel="stylesheet" href="./components/product-detail/productDetail.styles.css">
-<div class="container ws-lowered-60" >
-	<!-- Template for when no product was selected -->
-	<div ng-if="!$ctrl.product" class="col-xs-12">
-		<h1>No product was selected.</h1>
-		<a href="#!/products" class="ptn primary">Back</a>
-	</div>
-	<div ng-if="$ctrl.product" class="row">		
-		<!-- Product content -->
-		<div class="col-xs-12 col-sm-6 col-md-5 col-lg-4 ws-product-detail-container ws-overflow-hidden">
-			<img ng-src="{{$ctrl.product.imageUrl}}" class="ws-product-detail-image" alt="Description" />
-			<h3 class="ws-product-detail-title text-center">{{ $ctrl.product.name | uppercase }}</h3>
-			<p class="text-center">
-				<span ng-if="$ctrl.product.rate">{{ $ctrl.product.rate }}&nbsp;</span><span ng-if="$ctrl.product.rate" class="glyphicon glyphicon-star" aria-hidden="true"></span>&nbsp;&nbsp;
-				<span class="">{{ $ctrl.product.cost }} CZK</span>
-				<br>
-				<span class="ws-product-buy" ng-click="$ctrl.addToCart()">
-					Add to cart!
-				</span>
-			</p>
-			<p class="ws-product-detail-description">{{ $ctrl.product.description }}</p>
-			<div ng-if="$ctrl.lowQuantity($ctrl.product.quantity)" class="ws-important ws-top-right-absolute">
-				<p>Only {{ $ctrl.product.quantity }} pieces left!</p>
-			</div>
-			<div ng-if="$ctrl.product.quantity === 0" class="ws-cover"></div>
+<br />
+<!-- Template for when no product was selected -->
+<div ng-if="!$ctrl.product" class="col-xs-12">
+	<h1>No product was selected.</h1>
+	<a href="#!/products" class="ptn primary">Back</a>
+</div>
+<div ng-if="$ctrl.product" class="row">		
+	<!-- Product content -->
+	<div class="ws-product text-left col-sm-6 col-md-5 col-lg-4 col-xs-12 ">
+		<div class="col-xs-12 ws-no-horizontal-padding">
+			<img ng-src="{{$ctrl.product.imageUrl}}" class="ws-product-image" alt="Description" />
+			<div class="ws-fader-bottom"></div>
 		</div>
-		<!-- Comments -->
-		<div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
-			<!-- Comments ng-for -->
-			<div ng-if="!$ctrl.product.reviews">
-				<h2 class="text-center">No feedback has been submitted yet</h2>
+		<div class="col-xs-12 ws-no-horizontal-padding ws-product-info">
+			<h3 class="ws-product-title text-center">{{ $ctrl.product.name | uppercase }}</h3>
+			<p class="ws-product-description text-center">{{ $ctrl.product.description }}</p>
+			<div class="ws-attach-bottom">
+				<p class="text-center">
+					<span ng-if="$ctrl.product.rate">{{ $ctrl.product.rate }}&nbsp;</span><span ng-if="$ctrl.product.rate" class="glyphicon glyphicon-star" aria-hidden="true"></span>&nbsp;&nbsp;
+					<span class="">{{ $ctrl.product.cost }} CZK</span>
+					<br>
+					<span ng-if="$ctrl.product.quantity > 0" class="ws-action-text ws-product-buy" ng-click="$ctrl.addToCart()">
+						Add to cart!
+					</span>
+					<span ng-if="$ctrl.product.quantity === 0" class="ws-action-text ws-text-disabled">Sold Out</span>
+				</p>
+				<p ng-if="$ctrl.lowQuantity($ctrl.product.quantity)" class="ws-important-text">Only {{ $ctrl.product.quantity }} pieces left!</p>
 			</div>
-			<ws-review ng-repeat="review in $ctrl.product.reviews" review="review"></ws-review>
+		</div>
+		<div class="col-xs-12 ws-no-horizontal-padding">
 			<ws-review-edit review-added="$ctrl.addReview(review)"></ws-review-edit>
 		</div>
 	</div>
+	<!-- Comments -->
+	<div class="col-xs-12 col-sm-6 col-md-7 col-lg-8">
+		<!-- Comments ng-for -->
+		<div ng-if="!$ctrl.product.reviews">
+			<h2 class="text-center">No feedback has been submitted yet</h2>
+		</div>
+		<ws-review ng-repeat="review in $ctrl.product.reviews" review="review"></ws-review>
+	</div>
+</div>
 </div>

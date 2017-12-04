@@ -59,5 +59,8 @@
     angular.module("app").component('wsLogin', {
     	templateUrl: './components/login/login.template.html',
     	controller: LoginController,
-    });
+        bindings: {
+            windowClosed: '&'
+      }
+  });
 })();

@@ -9,6 +9,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
 {
 	try {
 		session_start();
+
+		// preserve current cart 
+		$cart = $_SESSION['temporaryCart'];
+
 		if (isset($_SESSION['admin'])) {			
 			// check files
 			if ( !file_exists($changes) )
@@ -23,7 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET')
 
 		session_unset();
 		session_destroy();
-		header('Location: '. $_SERVER['HTTP_REFERER']);
+
+		session_start();
+		$_SESSION['temporaryCart'] = $cart;
+
+		if (isset($_GET['refresh']))
+			header('Refresh: '. $_SERVER['HTTP_REFERER']);
+		else 
+			header('Location: '. $_SERVER['HTTP_REFERER']);
 	} catch (Exception $e) {	
 		header("HTTP/1.1 500 Internal Server Error");
 		echo $e->getMessage();

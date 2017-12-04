@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	var LoginService = function($rootScope, HttpService) {
+	var LoginService = function($rootScope, HttpService, $q) {
 		this.currentUser = null;
 
 		/**
@@ -108,8 +108,14 @@
 		* send logout request
 		*/
 		this.logout = function() {
-			HttpService.logout();
-			this.currentUser = null;
+			return HttpService.logout().then(
+				(res) => { 
+					// console.log(res);
+					this.currentUser = null; 
+				}, 
+				(reason) => { 
+					console.log(reason); 
+				});
 		}
 
 		/**
@@ -124,7 +130,7 @@
 		* check if the user is already logged in
 		*/
 		this.deleteAccount = function() {
-			HttpService.deleteAccount(this.currentUser.username).then(
+			return HttpService.deleteAccount(this.currentUser.username).then(
 				(res) => 
 				{
 					console.log(res);
@@ -139,7 +145,7 @@
 	}
 
 
-	LoginService.$inject = ["$rootScope", "HttpService"];
+	LoginService.$inject = ["$rootScope", "HttpService", "$q"];
 
 	angular.module("app").service("LoginService", LoginService);
 })();

@@ -51,7 +51,7 @@
 
 		this.logout = function() {
 			console.log("Logging out.");
-			return $http.get(this.baseUrl +  "logout.request.php");			
+			return $http.get(this.baseUrl +  "logout.request.php?refresh");			
 		}
 	}
 
