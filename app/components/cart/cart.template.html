@@ -37,9 +37,15 @@
 					<button type="button" class="btn btn-default" ng-click="$ctrl.clearCart()">Cancel</button>
 				</li>
 				<li ng-if="!$ctrl.getCurrentUser()" class="list-group-item text-center">
-					<h4 class="ws-warn-label ws-cursor-default">Log in is required to continue</h4>
+					<h4 class="ws-warn-label ws-cursor-default">Log in to continue</h4>
 				</li>
 			</ul>
 		</form>
 	</div>
 </div>
+
+
+<button ng-click='$ctrl.toggleModal()'>Open Modal Dialog</button>
+<modal show='modalShown' width='750px' height='60%'>
+	<p>Modal Content Goes here<p>
+</modal>
