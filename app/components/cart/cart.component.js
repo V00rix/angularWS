@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-  var CartController = function ($scope, ProductsService, LoginService, modal) {
+  var CartController = function ($scope, ProductsService, LoginService, confirmationFactory) {
     var $ctrl = this;
     $ctrl.cart = null;
 
@@ -39,45 +39,38 @@
     }
 
     $ctrl.removeProduct = function(id) {
-      var pr = ProductsService.products.find(p => p.id === $ctrl.cart.products[id].id);
-      $ctrl.cart.fullLength -= $ctrl.cart.products[id].quantity;
-      pr.quantity += $ctrl.cart.products[id].quantity;
-      $ctrl.cart.products.splice(id, 1);
-      ProductsService.cartProducts = $ctrl.cart;
-      ProductsService.saveTemporary();
+      confirmationFactory.confirm({message: "Are you sure you want to remove selected product from your cart?"}, () => {
+        var pr = ProductsService.products.find(p => p.id === $ctrl.cart.products[id].id);
+        $ctrl.cart.fullLength -= $ctrl.cart.products[id].quantity;
+        pr.quantity += $ctrl.cart.products[id].quantity;
+        $ctrl.cart.products.splice(id, 1);
+        ProductsService.cartProducts = $ctrl.cart;
+        ProductsService.saveTemporary();
+      });
     }
 
     $ctrl.orderConfirmed = function () {
-      ProductsService.buy(); 
-      $ctrl.cart.fullLength = 0;
-      $ctrl.cart.products = [];
+      ProductsService.buy().then(() => {
+        $ctrl.cart.products = [];
+        $ctrl.cart.fullLength = 0;
+      }); 
     }
 
     $ctrl.clearCart = function () {
-      ProductsService.clearCart();
-      $ctrl.cart.products = [];
-      ProductsService.saveTemporary();
+      confirmationFactory.confirm({message: "Are you sure you want to clear your cart?"}, () => {
+        ProductsService.clearCart();
+        $ctrl.cart.products = [];
+        ProductsService.saveTemporary();
+      });
     }
 
     $ctrl.getFullCost = function() {
       return $ctrl.cart.products.map(p => p.cost * p.quantity).reduce((acc, val) => acc + val, 0);
     }
-
-    $ctrl.toggleModal = function() {
-      console.log('test');
-
-      var config = {
-
-      };
-      modal.open(config).then(
-        (res) => console.log(res),
-        (reason) => console.log(reason));
-    };
-
   }
 
-  CartController.$inject = ["$scope", "ProductsService", "LoginService", "modalFactory"];
 
+  CartController.$inject = ["$scope", "ProductsService", "LoginService", "confirmationFactory"];
   angular.module("app").component('wsCart', {
     templateUrl: './components/cart/cart.template.html',
     controller: CartController

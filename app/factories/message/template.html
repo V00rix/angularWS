@@ -1,0 +1,6 @@
+<div class="ws-message-container {{'ws-message-' + severity}}">
+	<div class="ws-message">
+		<a href="" class="ws-message-close" ng-click="close()">&times;</a>
+		<h3 ng-repeat="message in messages track by $index" class="ws-message-text">{{message}}</h3>
+	</div>
+</div>

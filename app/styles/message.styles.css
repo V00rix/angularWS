@@ -1,0 +1,44 @@
+.ws-message-container {
+	position: fixed;
+	z-index: 10000;
+	background-color: #4bbe2c75;
+	width: 100%;
+	top: 52px;
+	padding: 10px 5px 10px 5px;
+	box-shadow: 0 0 10px black;
+	text-align: center;
+	color: white;
+}
+
+.ws-message-text {
+	margin: 0;
+	color: black;
+}
+
+.ws-message-success {
+	background-color: #4bbe2c75;
+}
+.ws-message-warn {
+	background-color: #bea42c99;
+}
+.ws-message-error {
+	background-color: #a80e0e99;
+}
+
+.ws-message-container .ws-message .ws-message-close {
+	font-size: 25px;
+	padding: 10px 16px;
+	font-weight: 900;
+	line-height: 25px;
+	top: 0;
+	color: black;
+	text-decoration: none;
+	position: absolute;
+	float: right;
+	width: 50px;
+	left: calc(100% - 50px);
+}
+
+.ws-message-container .ws-message .ws-message-close:hover {
+	color: white;
+}

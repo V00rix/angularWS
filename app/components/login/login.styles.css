@@ -44,11 +44,3 @@
 
 	}
 }
-@media only screen and (min-width : 768px) {
-	.ws-login-container {
-		border-radius: 5px;
-		width: 40%;
-		left: 30%;
-		top: 30% !important;
-	}
-}

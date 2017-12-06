@@ -16,18 +16,7 @@
     }
 
     function reviewColor() {
-      switch($ctrl.review.rating) {
-        case 1:
-        return 'rgba(192, 24, 24, 0.95)';
-        case 2:
-        return 'rgba(234, 182, 87, 0.95)';
-        case 3:
-        return 'rgba(234, 228, 38, 0.95)';
-        case 4:
-        return 'rgba(90, 168, 164, 0.95)';
-        case 5:
-        return 'rgba(164, 217, 135, 0.95)';
-      }
+      return 'ws-rating-' + $ctrl.review.rating; 
     }
 
     function getNumber(num) {

@@ -8,13 +8,16 @@
         $ctrl.selectedUser = null;
         $ctrl.selectedUserId = null;
         $ctrl.editing = false;
-        $ctrl.requestUrl = "../php/requests/users.request.php";
+        $ctrl.editPassword = false;
+        $ctrl.getRequestUrl = "../php/requests/admin/users/getUserList.request.php";
+        $ctrl.updateRequestUrl = "../php/requests/admin/users/updateUserList.request.php";
 
         $ctrl.$onInit = function() {
-            $http.get($ctrl.requestUrl).then(
+            $http.get($ctrl.getRequestUrl).then(
                 (res) => {
-                    // console.log(res);
+                    console.log(res);
                     $ctrl.users = res.data || [];
+                    $ctrl.users.forEach(u => u.password = "");
                 },
                 (res) => {
                     console.error(res);
@@ -22,9 +25,9 @@
         }
 
         $ctrl.saveUsers = function() {
-            $http.post($ctrl.requestUrl, $ctrl.users).then(
+            $http.post($ctrl.updateRequestUrl, $ctrl.users).then(
                 (res) => {
-                    // console.log(res);
+                    console.log(res);
                     console.log('Success');
                 },
                 (res) => {
@@ -66,7 +69,8 @@
             $ctrl.closeEdit();
         }
 
-        $ctrl.closeEdit = function() {      
+        $ctrl.closeEdit = function() {     
+            $ctrl.editPassword = false; 
             $ctrl.selectedUser = null;
             $ctrl.selectedUserId = null;
             $ctrl.editing = false;

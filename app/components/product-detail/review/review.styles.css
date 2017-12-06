@@ -1,16 +1,50 @@
 .ws-review-container {
 	font-size: 2.4rem;
-	box-shadow: 0 0 10px #000000b8;
-	border-radius: 5px;
+	color: white;
+	background-color: black;
 	padding-bottom: 10px;
+	
+	/* word break */
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+	-ms-word-break: break-all;
+	word-break: break-all;
+	word-break: break-word;
+	-ms-hyphens: auto;
+	-moz-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+
+	/* transitions */
+	transition: background-color .15s ease-in;
+}
+.ws-review-container:hover { 
+	background-color: #101010;
 }
 
-p.ws-rating > * {
-	    top: 3px;
-    left: 5px;
-    display: block;
+.ws-rating-5 {
+	border-right: 5px solid rgba(164, 217, 135, 0.95);
+}
+.ws-rating-4 {
+	
+	border-right: 5px solid rgba(90, 168, 164, 0.95);
+}
+.ws-rating-3 {
+	
+	border-right: 5px solid rgba(234, 228, 38, 0.95);
+}
+.ws-rating-2 {
+	
+	border-right: 5px solid rgba(234, 182, 87, 0.95);
+}
+.ws-rating-1 {
+	
+	border-right: 5px solid rgba(192, 24, 24, 0.95);
 }
 
+.ws-review-title {
+	font-size: 2em;
+}
 .ws-review-date {
 	font-size: 1.7rem;
 }

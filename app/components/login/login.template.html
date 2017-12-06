@@ -27,10 +27,9 @@
     <div class="form-group">
       <label for="password">Password</label>
       <input type="password" class="form-control" name="password" id="password" ng-model="$ctrl.password" placeholder="Password" required>
-      <div ng-show="form.$submitted">
-        <p class="ws-warn-label" ng-show="form.password.$error.required && $ctrl.badPassword != true">Password is empty</p>
-        <p class="ws-error-label" ng-if="$ctrl.badPassword === true">Wrong password</p>
-      </div>
+
+      <p class="ws-warn-label" ng-show="form.password.$error.required && !$ctrl.badPassword">Password is empty</p>
+      <p class="ws-error-label" ng-if="$ctrl.badPassword">Wrong password</p>
     </div>
     <button type="submit" class="btn btn-primary ws-full-width">Login</button>
     <a href="registration" class="ws-simple-link" ng-click="$ctrl.register()">Register</a>

@@ -11,9 +11,10 @@
   <title>WebShop</title>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/main.styles.css">
   <link rel="stylesheet" href="styles/variables.css">
-  <link rel="stylesheet" href="styles/modal.css">
+  <link rel="stylesheet" href="styles/confirmation.styles.css">
+  <link rel="stylesheet" href="styles/message.styles.css">
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -31,7 +32,9 @@
   <script src="./services/login.service.js"></script>
 
   <!-- Factories -->
-  <script src="./factories/modal.factory.js"></script>
+  <script src="./factories/message/message.factory.js"></script>
+  <script src="./factories/confirmation/confirmation.factory.js"></script>
+  <script src="./factories/confirmation/confirmationController.js"></script>
 
   <!-- Directives -->
   <script src="./directives/match.directive.js"></script>
@@ -51,12 +54,12 @@
   <script src="./components/product-detail/review-edit/reviewEdit.component.js"></script>
   <script src="./components/registration/registration.component.js"></script>
   <script src="./components/not-found/not-found.component.js"></script>
-
 </head>
+<!-- Main view -->
 <body>
-  <div class="container ws-lowered-50" >
+  <div class="container ws-lowered-30" >
     <div ng-view></div>
   </div>
   <ws-header></ws-header>
-  </body>
-  </html>
+</body>
+</html>

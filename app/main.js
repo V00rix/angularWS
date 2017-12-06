@@ -56,3 +56,8 @@
 
     })();
 })();
+
+function someFunction() {
+    console.log('test');
+    alert('rtest');
+}

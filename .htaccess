@@ -1,0 +1,2 @@
+ErrorDocument 404 /angularWS/errors/404.php
+ErrorDocument 403 /angularWS/errors/403.php

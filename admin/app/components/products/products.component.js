@@ -9,13 +9,15 @@
         $ctrl.selectedProduct = null;
         $ctrl.selectedProductId = null;
         $ctrl.editing = false;
-        $ctrl.requestUrl = "../php/requests/products.request.php";
+        $ctrl.getRequestUrl = "../php/requests/admin/products/getProductList.request.php";
+        $ctrl.updateRequestUrl = "../php/requests/admin/products/updateProductList.request.php";
 
         $ctrl.$onInit = function() {
-            $http.get($ctrl.requestUrl).then(
+            $http.get($ctrl.getRequestUrl).then(
                 (res) => {
                     console.log(res);
                     $ctrl.products = res.data;
+                    $ctrl.products.sort((a, b) => { return a.id < b.id ? -1 : 1; });
                 },
                 (res) => {
                     console.error(res);
@@ -23,7 +25,7 @@
         }
 
         $ctrl.saveProducts = function() {
-            $http.post($ctrl.requestUrl, $ctrl.products).then(
+            $http.post($ctrl.updateRequestUrl, $ctrl.products).then(
                 (res) => {
                     console.log(res);
                 },
@@ -41,8 +43,8 @@
         $ctrl.newProduct = function() {
         	$ctrl.selectedProduct = new Product(
         		$ctrl.products.map(m => m.id)
-        		.reduce((acc, val) => acc > val ? acc : val, 0));
-        	$ctrl.editing = true;
+        		.reduce((acc, val) => acc > val ? acc : val, 0) + 1);
+            $ctrl.editing = true;
         }
 
         $ctrl.editConfirmed = function() {
@@ -50,8 +52,9 @@
         		$ctrl.products[$ctrl.selectedProductId] = angular.copy($ctrl.selectedProduct);
         	else
         		$ctrl.products.push(angular.copy($ctrl.selectedProduct));
-        	$ctrl.closeEdit();
-        	$ctrl.saveProducts();
+            $ctrl.products.sort((a, b) => { return a.id < b.id ? -1 : 1; });
+            $ctrl.closeEdit();
+            $ctrl.saveProducts();
         }
 
         $ctrl.editCanceled = function() {
@@ -76,7 +79,7 @@
     ProductsController.$inject = ["$scope", "$http"];
 
     angular.module("app").component('wsProducts', {
-     templateUrl: './app/components/products/products.template.html',
-     controller: ProductsController,
- });
+       templateUrl: './app/components/products/products.template.html',
+       controller: ProductsController,
+   });
 })();

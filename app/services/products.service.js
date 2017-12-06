@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	var ProductsService = function(HttpService, $q) {
+	var ProductsService = function(HttpService, $q, messageFactory) {
 		this.products = null;
 		this.cartProducts = {
 			products: null,
@@ -30,7 +30,8 @@
 						deferred.resolve(this.products);
 					},
 					(res) => {
-						console.error("Could not load products.");
+						messageFactory.display("Could not get product list", "warn");
+						console.error(res);
 						// reject to error message
 						deferred.reject("Couldn't get products.", res);
 					});
@@ -40,18 +41,24 @@
 		}
 
 		this.buy = function() {
+			var deferred = $q.defer();
 			// create http request data
 			var request = [];
 			this.cartProducts.products.forEach(
 				p => request.push({id: p.id, quantity: p.quantity}));
 
-			return HttpService.buy(request).then(
+			HttpService.buy(request).then(
 				(res) => {
 					console.log(res);
+					messageFactory.display("Buy request successful", "success");
+					deferred.resolve();
 				},
 				(res) => {
+					messageFactory.display(["Buy request failed", res,data], "error");
 					console.error("Error!", res.statusText + "\n" , res.data);
+					deferred.reject();
 				});
+			return deferred.promise;
 		}
 
 		this.clearCart = function() {			
@@ -67,8 +74,10 @@
     	this.saveTemporary = function() {
     		HttpService.postTemp(this.cartProducts).then(
     			(res) => {
+    				console.log(res);
     			},
     			(reason) => {
+    				messageFactory.display("Could not save temporary cart", "warn");
     				console.error(reason); 
     			});
     	}
@@ -84,14 +93,22 @@
 			else
 				HttpService.getTemp().then(
 					(res) => {
-						this.cartProducts = res.data.cartProducts ? res.data.cartProducts : {
-							products: [],
-							fullLength: 0    					
-						};
+						if (res.data && res.data.cartProducts) {
+							this.cartProducts = res.data.cartProducts;
+							this.cartProducts.products = res.data.cartProducts.products ? res.data.cartProducts.products : [];
+							this.cartProducts.fullLength = this.cartProducts.products.map(p => p.quantity).reduce((acc, val) => acc + val, 0);
+						}	
+						else {
+							this.cartProducts = res.data.cartProducts ? res.data.cartProducts : {
+								products: [],
+								fullLength: 0    					
+							};
+						}
 						this.resolveTemp();
 						deferred.resolve(this.cartProducts);
 					},
 					(reason) => {
+						messageFactory.display("Could not get temporary cart", "warn");
 						console.error(reason); 
 						deferred.reject(reason);
 					});
@@ -113,7 +130,7 @@
 		}
 	}
 
-	ProductsService.$inject = ['HttpService', '$q'];
+	ProductsService.$inject = ["HttpService", "$q", "messageFactory"];
 
 	angular.module("app").service("ProductsService", ProductsService);
 })();

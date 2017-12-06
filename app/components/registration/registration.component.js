@@ -12,7 +12,6 @@
     // error statuses
     $ctrl.usernameNotFree = null;
     $ctrl.emailNotFree = null;
-    $ctrl.badUsername = null;
     // unhandled error
     $ctrl.unhandledError = null;
 
@@ -46,10 +45,7 @@
         let requestConfig = {
           email: $ctrl.email, 
           emailCallback: function(status) {
-            if (status)
-              $ctrl.emailNotFree = false;
-            else
-              $ctrl.emailNotFree = true;
+              $ctrl.emailNotFree = status;
           }
         };
         LoginService.checkCredentials(requestConfig); 
@@ -57,7 +53,7 @@
     }
 
     $ctrl.register =  function(valid) {
-      if (valid) {      
+      if (valid && !$ctrl.usernameNotFree && !$ctrl.emailNotFree) {      
         let requestConfig = {
           username: $ctrl.username, 
           email: $ctrl.email,

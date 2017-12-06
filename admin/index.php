@@ -1,87 +1,58 @@
-<?php
-// includes
-include_once '../php/helpers/login.helper.php';
-include_once '../php/classes/exceptions.php';
+<?php /* Admin login entry point */
+/* includes */
+$root = $_SERVER['DOCUMENT_ROOT'] . '/angularWS/php/';
 
-// set file path
-$filePath = "../app_data/admins.json";
-$changes = "../app_data/changes.json";
+// helpers
+include $root . 'helpers/redirection.helper.php';
 
-if ( !file_exists("../app_data") )
-	mkdir("../app_data");
+/* redirection paths */ 
+$loginAdminPath = "../php/requests/admin/login/loginAdmin.request.php";
 
-session_start();
-
+// main request
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
-	if (file_exists($filePath)) {
-		$adminsList = json_decode(file_get_contents($filePath));
-		
-		// try to login as admin, auto logout after 5 minutes
-		login($adminsList, $_POST['username'], $_POST['password'], 'admin', 300, 
-			function() use ($changes) {
-				try {		
-					$_SESSION['loginError'] = "";
+	// start session
+	session_start();
 
-					// check files
-					if ( !file_exists($changes) )
-						throw new fileNotFoundException("No status file found");
-					$changesData = json_decode(file_get_contents($changes));
-					// set as in use
-					$changesData->open = false;
+	// read form data
+	$_SESSION['username'] = $_POST['username'];
+	$_SESSION['password'] = $_POST['password'];
 
-					var_dump($changes);
-					var_dump($changesData);
-
-					unlink($changes);
-					file_put_contents($changes, json_encode($changesData));
-
-					echo file_get_contents("./app/app.template.html");
-				} 
-				catch (fileNotFoundException $e) {
-					header("HTTP/1.1 500 File Not Found");
-					echo $e->getMessage();			
-				} 
-				catch (Exception $e) {
-					header("HTTP/1.1 500 Internal Server Error");
-					echo $e->getMessage();					
-				}
-			},
-			function($e) {
-				$_SESSION['loginError'] = $e->getMessage();
-			});
-	}
-	else
-		$_SESSION['loginError'] = "No users file found";
-	header("HTTP/1.1 303 See Other");
-	header("location: index.php");
+	// redirect to main login logic
+	redirectTo($loginAdminPath);
 }
+// login form (watch description inside for more info)
 else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-	try {
-		if (!isset($_SESSION['loginError']))
-			throw new notAllowedException("");
-		
-		if(!isset($_SESSION['admin'])) 
-			throw new notAllowedException($_SESSION['loginError']);
-		
-		// check if the session is active
-		sessionNotExpired();
+	/* 
+	*	When GET occurs, there are only two possible options:
+	*
+	*		1. The page is loaded for the first time
+	*		so we $_SESSION['loginError'] is not yet set.
+	*		-> DISPLAY USUSAL LOGIN PAGE
+	*
+	*		2. Redirect has occured from $loginAdminPath,
+	*		because errors has occured
+	*		-> DISPLAY ERROR IN THE BOTTOM OF LOGIN PAGE			
+	*/
 
-		echo file_get_contents("./app/app.template.html");
+	// display default login header
+	echo file_get_contents("./login/login_form.template.html");	
 
-	} catch (baseException $e) {
-		// when trying to get the page, but not logged in as admin
-		echo file_get_contents("./login/login_form.template.html");
-		$msg = $e->getMessage();
-		if (strlen($msg) < 1)
-			echo file_get_contents("./login/login_success.template.html");
-		else {
-			echo file_get_contents("./login/error/login_error_0.template.html");
-			echo $msg;
-			echo file_get_contents("./login/error/login_error_1.template.html");
-		}
+	// start session
+	session_start();
+
+	// check for errors while trying to login 
+	if (!isset($_SESSION['loginError']) || $_SESSION['loginError'] === "")
+		// no errors -> usual login page
+		echo file_get_contents("./login/login_success.template.html");
+	else {
+		// error -> display errror
+		echo file_get_contents("./login/error/login_error_0.template.html");
+		echo $_SESSION['loginError'];
+		echo file_get_contents("./login/error/login_error_1.template.html");
 	}
 }
-else{
+// not allowed
+else {
 	header("HTTP/1.1 405 Method Not Allowed");
 	echo $_SERVER['REQUEST_METHOD'] . " method is not allowed";
 }

@@ -18,6 +18,16 @@
 	color: white !important;
 }
 
+.navbar-nav>li>a:focus {
+	color: white !important;
+}
+
+
+
+.navbar-user:focus {
+	color: white !important;
+}
+
 .ws-user-glyphicon {
 	margin: 0 5px 0 0;
 }

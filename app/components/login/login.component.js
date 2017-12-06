@@ -13,21 +13,18 @@
     	$ctrl.badPassword = null;
 
     	$ctrl.login = function(valid) {
-    		if (valid) {
+    		if (valid && $ctrl.usernameFound) {
     			let requestConfig = {
     				username: $ctrl.username, 
     				password: $ctrl.password, 
     				successCallback: () => { 
     					LoginService.userChanged(new User($ctrl.username));
     				},
-    				passwordCallback: (status) => {
-    					if (!status) 
-    						$ctrl.badPassword = true;
-    					else
-    						$ctrl.badPassword = false;
+    				failureCallback: (status) => {
+                        $ctrl.badPassword = status;
     				}
     			};  
-    			LoginService.checkCredentials(requestConfig);
+    			LoginService.login(requestConfig);
     		}
     	}
 

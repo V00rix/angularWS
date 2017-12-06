@@ -1,7 +1,7 @@
 (function() {
 	"use strict";
 
-	var LoginService = function($rootScope, HttpService, $q) {
+	var LoginService = function($rootScope, HttpService, $q, messageFactory) {
 		this.currentUser = null;
 
 		/**
@@ -32,13 +32,13 @@
 				unhandledCallback: requestsConfig.unhandledCallback ? requestsConfig.unhandledCallback : function (data) {}
 			};
 
-			// Call httpService to login
+			// Call httpService to check credentials
 			HttpService.getCredentialsStatus(requestsConfig.username, requestsConfig.email, requestsConfig.password).then(
 				(result) => {
-					requestsConfig.usernameCallback(result.data.usernameStatus);
-					requestsConfig.emailCallback(result.data.emailStatus);	
-					requestsConfig.passwordCallback(result.data.passwordStatus);	
-					if (result.data.usernameStatus === true && result.data.passwordStatus === true) {						
+					requestsConfig.usernameCallback(result.data.usernameFound);
+					requestsConfig.emailCallback(result.data.emailFound);	
+					requestsConfig.passwordCallback(result.data.passwordFound);	
+					if (result.data.usernameFound === true && result.data.passwordFound === true) {						
 						requestsConfig.successCallback();
 					}
 				},
@@ -74,11 +74,39 @@
 			// Call httpService to register new user
 			HttpService.register(requestsConfig.username, requestsConfig.email, requestsConfig.password).then(
 				(result) => {
+					messageFactory.display("Registration successful", "success");
 					requestsConfig.successCallback();
 				},
 				(reason) => {
+					messageFactory.display(["Registration failed", "Reason: " + reason.data], "error");
+					console.error(reason);
 					requestsConfig.failureCallback(reason);
 				});				
+		}
+
+		this.login = function(requestsConfig) {
+			// Set default config
+			requestsConfig = {
+				// Request data
+				username: requestsConfig.username ? requestsConfig.username : null, 
+				password : requestsConfig.password ? requestsConfig.password : null, 
+				// Callbacks
+				successCallback: requestsConfig.successCallback ? requestsConfig.successCallback : function () {}, 
+				failureCallback: requestsConfig.failureCallback ? requestsConfig.failureCallback : function () {},
+				unhandledCallback: requestsConfig.unhandledCallback ? requestsConfig.unhandledCallback : function (data) {}
+			};
+
+			// Call httpService to login
+			HttpService.login(requestsConfig.username, requestsConfig.email, requestsConfig.password).then(
+				(result) => {
+					messageFactory.display("Login successful", "success");
+					requestsConfig.successCallback();
+				},
+				(reason) => {
+					console.log(reason);
+					messageFactory.display(["Login failed", "Reason: " + reason.data], "error");
+					requestsConfig.failureCallback(reason);
+				});
 		}
 
 		/**
@@ -110,11 +138,12 @@
 		this.logout = function() {
 			return HttpService.logout().then(
 				(res) => { 
-					// console.log(res);
+					messageFactory.display("Logged out", "success");
 					this.currentUser = null; 
 				}, 
 				(reason) => { 
-					console.log(reason); 
+					messageFactory.display(["Could not logout", "Reason: " + reason.data], "warn", 7000);
+					console.error(reason); 
 				});
 		}
 
@@ -134,18 +163,18 @@
 				(res) => 
 				{
 					console.log(res);
-					console.log('Delete successfull');
+					messageFactory.display("Deletion successful", "success");
 					this.userChanged(null);				
 				}, 
 				(reason) => {
-					console.error('Could not delete');
 					console.error(reason);
+					messageFactory.display(["Deletion failed", "Reason: " + reason.data], "error");
 				});
 		}
 	}
 
 
-	LoginService.$inject = ["$rootScope", "HttpService", "$q"];
+	LoginService.$inject = ["$rootScope", "HttpService", "$q", "messageFactory"];
 
 	angular.module("app").service("LoginService", LoginService);
 })();

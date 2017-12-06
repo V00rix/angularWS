@@ -62,13 +62,15 @@
 				</div>
 				<div class="form-group">
 					<label for="password">Password</label>
-					<input type="password" class="form-control" name="password" id="password" ng-model="$ctrl.password" placeholder="Password" required minlength="8" maxlength="16" pattern="^[A-z0-9]{8,16}$">
+					<input type="password" class="form-control" name="password" id="password" ng-model="$ctrl.password" placeholder="Password" required minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]*$">
 					<!-- Warnings -->
 					<div class="ws-warnings">
-						<div ng-show="form.$submitted">
-							<p class="ws-error-label" ng-show="form.password.$error.pattern">
-								Password contains forbidden characters
+						<div ng-show="form.password.$touched">
+							<p class="ws-warn-label" ng-show="form.password.$error.pattern">
+								Password should contain at least one uppercase letter, one lowercase letter and one number
 							</p>
+						</div>
+						<div ng-show="form.$submitted">
 							<p class="ws-warn-label" ng-show="form.password.$error.required">
 								Password cannot be empty
 							</p>
@@ -80,7 +82,7 @@
 				</div>				
 				<div class="form-group">
 					<label for="passwordSecond">Re-enter password</label>
-					<input type="password" class="form-control" name="passwordSecond" id="passwordSecond" ng-model="$ctrl.passwordSecond" placeholder="Re-enter password" required maxlength="16" match="password">
+					<input type="password" class="form-control" name="passwordSecond" id="passwordSecond" ng-model="$ctrl.passwordSecond" placeholder="Re-enter password" required match="password">
 					<!-- Warnings -->
 					<div ng-show="form.passwordSecond.$dirty">						
 						<p class="ws-warn-label" ng-show="form.passwordSecond.$error.pwmatch">
