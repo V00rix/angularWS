@@ -1,4 +1,5 @@
-<?php 
+<?php /* Custom exceptions */ 
+
 // base exception for this application
 class baseException extends Exception {
 	public function header() {
@@ -41,35 +42,42 @@ class argumentMissingException extends badArgumentException {
 	}
 }
 
-// login exceptions
+/* base for login exceptions */
 class loginFailedException extends baseException {}
+// based on situation this might refer to either not found username, or when one is already taken
+// or when username is not set, or doesn't pass validation check 
 class badUsernameException extends loginFailedException {
 	public function header() {
 		header("HTTP/1.1 490 Bad Username");
 	}
 }
+// this should normally refer to not found password for selected username 
+// or when password is not set, or doesn't pass validation check 
 class badPasswordException extends loginFailedException {
 	public function header() {
 		header("HTTP/1.1 491 Bad Password");
 	}
 }
+// based on situation this might refer to either not found email, or when one is already taken
+// or when email is not set, or doesn't pass validation check
 class badEmailException extends loginFailedException {
 	public function header() {
 		header("HTTP/1.1 492 Bad Email");
 	}
 }
 
-// file-related exceptions
+/* base for file-related exceptions */
 class fileException extends baseException {}
+// file doesn't exist at location
 class fileNotFoundException extends fileException {
 	public function header() {
 		header("HTTP/1.1 502 File Not Found");
 	}
 }
+// file is in use by admin, thus no cahnges can be made
 class inUseException extends fileException {
 	public function header() {
 		header("HTTP/1.1 503 In Use");
 	}
 }
-
 ?>

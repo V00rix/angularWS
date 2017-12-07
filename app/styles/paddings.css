@@ -1,0 +1,9 @@
+.ws-horizontal-padding-100 {
+	padding-left: 100px !important;
+	padding-right: 100px !important;	
+}
+
+.ws-no-horizontal-padding {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}

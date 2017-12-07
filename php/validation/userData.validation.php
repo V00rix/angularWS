@@ -5,6 +5,7 @@ $root = $_SERVER['DOCUMENT_ROOT'] . '/angularWS/php/';
 // classes
 include_once $root . '/classes/Exceptions/exceptions.php';
 
+// validates all users in the list
 function validateUserList($users, $strictMode = true) {
 	if (!is_array($users)) 
 		throw new badArgumentException("Input is not a users array");
@@ -41,6 +42,7 @@ function validateEncryptedUserList($newUsers, $oldUsers) {
 	}
 }
 
+// validate all user fields
 function validUserFields($user, $userList = null, $strictMode = true) {	
 	if (!isset($user)) 
 		throw new argumentMissingException("user");
@@ -64,6 +66,7 @@ function validUserFields($user, $userList = null, $strictMode = true) {
 	}
 }
 
+// checks if username is valid
 function validUsername($username, $userList = null) {
 	// check if is set
 	if (!isset($username))
@@ -83,6 +86,7 @@ function validUsername($username, $userList = null) {
 	return false;
 }
 
+// checks if email is valid
 function validEmail($email, $userList = null) {
 	// check if is set
 	if (!isset($email))
@@ -102,6 +106,7 @@ function validEmail($email, $userList = null) {
 	return false;
 }
 
+// checks if password is valid
 function validPassword($password, $userList = null) {
 	// check if is set
 	if (!isset($password)) 

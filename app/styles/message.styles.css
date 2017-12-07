@@ -1,7 +1,7 @@
 .ws-message-container {
 	position: fixed;
 	z-index: 10000;
-	background-color: #4bbe2c75;
+	background-color: #40872bed;
 	width: 100%;
 	top: 52px;
 	padding: 10px 5px 10px 5px;
@@ -12,17 +12,18 @@
 
 .ws-message-text {
 	margin: 0;
-	color: black;
+	color: white;
+	text-shadow: 0px 0px 10px black;
 }
 
 .ws-message-success {
-	background-color: #4bbe2c75;
+	background-color: #40872bed;
 }
 .ws-message-warn {
-	background-color: #bea42c99;
+	background-color: #8f7a1aed;
 }
 .ws-message-error {
-	background-color: #a80e0e99;
+	background-color: #491616ed;
 }
 
 .ws-message-container .ws-message .ws-message-close {

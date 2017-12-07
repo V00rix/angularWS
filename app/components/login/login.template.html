@@ -4,11 +4,14 @@
   <form ng-submit="$ctrl.login(form.$valid)" name="form" novalidate>
     <div class="form-group">
       <label for="username">Username</label>
-      <input type="text" class="form-control" name="username" id="username" ng-model="$ctrl.username" placeholder="Username" required="" ng-change="$ctrl.checkUsername(form.username.$valid)" ng-model-options="{ debounce: 300 }" minlength="4" maxlength="12">
+      <input type="text" class="form-control" name="username" id="username" ng-model="$ctrl.username" placeholder="Username" required="" ng-change="$ctrl.checkUsername(form.username.$valid)" ng-model-options="{ debounce: 300 }" minlength="4" maxlength="12" pattern="^[A-z0-9]*$">
       <!-- Warnings -->
       <div class="ws-warnings">
         <p class="ws-warn-label" ng-show="form.username.$error.required && (form.$submitted || form.username.$touched)">
           Please enter username
+        </p>
+        <p class="ws-error-label" ng-show="form.username.$error.pattern">
+          Username contains forbidden characters
         </p>
         <!-- Asyng validators -->
         <div ng-show="$ctrl.username">  

@@ -54,7 +54,7 @@
 					deferred.resolve();
 				},
 				(res) => {
-					messageFactory.display(["Buy request failed", res,data], "error");
+					messageFactory.display(["Buy request failed", res.data], "error");
 					console.error("Error!", res.statusText + "\n" , res.data);
 					deferred.reject();
 				});
@@ -126,7 +126,19 @@
 		}
 
 		this.addReview = function(product, review) {
-			return HttpService.addReview(product.id, review);
+			var deferred = $q.defer();
+			HttpService.addReview(product.id, review).then(
+				(response) => {
+					console.log(response);
+					messageFactory.display("Review added", "success");
+					deferred.resolve(response);
+				},
+				(reason) => {
+					console.error(reason);
+					messageFactory.display(["Could not add review", "Reason: " + reason.data], "error");
+					deferred.reject(reason);
+				});
+			return deferred.promise;
 		}
 	}
 

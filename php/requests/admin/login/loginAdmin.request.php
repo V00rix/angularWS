@@ -20,7 +20,9 @@ try {
 	methodAllowed('GET');
 
 	// start session
-	session_start();
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 
 	// try to login as admin, auto logout after 5 minutes
 	login(getFileContents($adminsFilePath), $_SESSION['username'], $_SESSION['password'], 'admin', 300, 

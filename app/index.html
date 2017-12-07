@@ -6,13 +6,41 @@
   <meta name="keywords" content="WebShop">
   <meta name="author" content="Vladyslav Yazykov">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- For correct angularjs html 5 routing -->
   <base href="/angularWS/app/">  
+  <!-- Favicon -->
+  <!-- IE 10 Metro Tile Icon -->
+  <meta name="msapplication-TileColor" content="#ffffff00" />
+  <meta name="msapplication-TileImage" content="/angularWS/app/favicon/bird-house-silhouette-144-242143.png">
+  <!-- Main icon  -->
+  <link rel="icon" type="image/x-icon" href="/angularWS/app/favicon/favicon.ico">
+  <!-- Apple iOS devices and Google Android Devices -->
+  <link rel="apple-touch-icon-precomposed" href="/angularWS/app/favicon/bird-house-silhouette-152-242143.png">
+  <!-- For iPad with high-resolution Retina display running iOS ≥ 7 -->
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/angularWS/app/favicon/bird-house-silhouette-152-242143.png">
+  <!-- For iPad with high-resolution Retina display running iOS ≤ 6 -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/angularWS/app/favicon/bird-house-silhouette-144-242143.png">
+  <!-- For iPhone with high-resolution Retina display running iOS ≥ 7 -->
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/angularWS/app/favicon/bird-house-silhouette-120-242143.png">
+  <!-- For iPhone with high-resolution Retina display running iOS ≤ 6 -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/angularWS/app/favicon/bird-house-silhouette-114-242143.png">
+  <!-- For first- and second-generation iPad -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/angularWS/app/favicon/bird-house-silhouette-72-242143.png">
+  <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices -->
+  <link rel="apple-touch-icon-precomposed" href="/angularWS/app/favicon/bird-house-silhouette-57-242143.png">
+  <!-- Any additional png sizes that you add that aren't covered above -->
+  <link rel="icon" href="/angularWS/app/favicon/bird-house-silhouette-32-242143.png" sizes="32x32">
+
   <!-- Title -->
   <title>WebShop</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles/main.styles.css">
   <link rel="stylesheet" href="styles/variables.css">
+  <link rel="stylesheet" href="styles/paddings.css">
+  <link rel="stylesheet" href="styles/margins.css">
+  <link rel="stylesheet" href="styles/colors.css">
+  <link rel="stylesheet" href="styles/scrollbars.css">
   <link rel="stylesheet" href="styles/confirmation.styles.css">
   <link rel="stylesheet" href="styles/message.styles.css">
 
@@ -57,7 +85,7 @@
 </head>
 <!-- Main view -->
 <body>
-  <div class="container ws-lowered-30" >
+  <div class="container ws-lowered-30 ws-horizontal-padding-100" >
     <div ng-view></div>
   </div>
   <ws-header></ws-header>

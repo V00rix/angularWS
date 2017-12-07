@@ -1,4 +1,4 @@
-<?php 
+<?php /* Review class */ // <- NOT USED
 class CReview {
 	// reference author
 	public $author;

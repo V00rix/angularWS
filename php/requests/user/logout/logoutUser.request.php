@@ -14,7 +14,9 @@ try {
 	methodAllowed('GET');
 
 	// start session
-	session_start();
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 
 	// preserve current cart 
 	$cart = $_SESSION['temporaryCart'];
@@ -23,7 +25,10 @@ try {
 	session_unset();
 	session_destroy();
 
+	// start new session
 	session_start();
+	
+	// save temporary cart to new session
 	$_SESSION['temporaryCart'] = $cart;
 
 	// redirect back

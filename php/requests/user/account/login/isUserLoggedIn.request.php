@@ -10,7 +10,9 @@ try {
 	methodAllowed('GET');
 
 	// start session
-	session_start();
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 
 	// return username if user  is logged in
 	echo (isset($_SESSION['user']) ? $_SESSION['user'] : null);
@@ -19,4 +21,4 @@ try {
 catch (Exception $e) {
 	transformException($e);
 }
- ?>
+?>

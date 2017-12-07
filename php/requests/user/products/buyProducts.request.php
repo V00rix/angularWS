@@ -21,7 +21,12 @@ $changesFilePath = "../../../../app_data/changes.json";
 try {
 	methodAllowed('POST');
 
-	session_start();
+	// start session
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
+
+	// check permissions
 	isAllowed('user');
 
 	// decode products from request
@@ -35,8 +40,6 @@ try {
 
 	if (!isset($user->history))
 		$user->history = [];
-
-	var_dump($params);
 
 	// loop through elements of request
 	foreach ($params as $prod) {

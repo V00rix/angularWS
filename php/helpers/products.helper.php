@@ -8,6 +8,7 @@ include_once $root . 'classes/Product/CProduct.class.php';
 
 // validation
 include_once $root . 'validation/common.validation.php';
+include_once $root . 'validation/product.validation.php';
 
 /* Functions */
 // buy product
@@ -21,16 +22,15 @@ function buyProduct($product, $productsList, $user) {
 		throw new badArgumentException("Quantity is not set");
 	
 	// find related product
-	$prod = searchProduct($productsList, $product->id);
-
-	var_dump($prod);
+	$prod = findProduct($productsList, $product->id);
 
 	// check quantity range
 	inRange($product->quantity, 0,  $prod->quantity, "Product quantity");
 
 	$prod->quantity -= $product->quantity;	
 
-	$toHistory =  CProduct::from($prod);
+	// add product to user's history
+	$toHistory = CProduct::from($prod);
 	$toHistory->reviews = null;
 	$toHistory->quantity = $product->quantity;
 
@@ -38,11 +38,36 @@ function buyProduct($product, $productsList, $user) {
 }
 
 // find first product with such id
-function searchProduct($productList, $id) {
+function findProduct($productList, $id) {
 	foreach ($productList as $product) {
 		if ($product->id === $id)
 			return $product;
 	}
 	throw new badArgumentException("Product with such id doesn't exist");
+}
+
+// add review to a product
+function addReview($productId, $products, $review) {
+	// check product id and try to find product
+	if (!isset($productId))
+		throw new argumentMissingException("Missing Product Id");
+	$product = findProduct($products, $productId);
+
+	// validate review
+	validateReview($review);
+
+	// push last review						
+	array_push($product->reviews, $review);
+
+	/* Update product's rating */
+	// product.rating = (product.rating * product.reviews.count + review.rate) / (product.reviews.cout + 1)
+	// great, but works only with properly calculated rating before
+	// so we use this
+	$totalProducts = 0;
+	$totalRatings = 0;
+	foreach ($product->reviews as $rev) {
+		$totalProducts++;
+		$totalRatings += $rev->rating;
+	}
 }
 ?>

@@ -11,7 +11,10 @@ include $root . 'helpers/exceptionToResponse.helper.php';
 try {
 	methodAllowed('POST');
 
-	session_start();
+	// start session
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 
 	// decode products from request
 	$params = file_get_contents('php://input');

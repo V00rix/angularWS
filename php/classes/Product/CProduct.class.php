@@ -13,7 +13,7 @@ class CProduct
 	public $reviews = null;
 
 	/* constructors */
-	// default constructor
+	// empty constructor
 	function __construct() {
 	}
 
@@ -22,6 +22,7 @@ class CProduct
 		$name = null, $description = null,
 		$imageUrl = null, $quantity = null, 
 		$cost = null, $reviews ) {
+
 		// create new instance
 		$instance = new self();
 
@@ -39,10 +40,7 @@ class CProduct
 
 	// copy constructor
 	public static function from( $another ) {
-		// create new instance
 		$instance = new self();
-		
-		// assign params
 		$instance->id = $another->id;
 		$instance->name = $another->name ? $another->name : "Nameless product";
 		$instance->description = $another->description ? $another->description : "No description is available for this product.";
@@ -50,7 +48,6 @@ class CProduct
 		$instance->quantity = $another->quantity ? $another->quantity : 1;
 		$instance->cost = $another->cost ? $another->cost : 150;
 		$instance->reviews = $another->reviews;
-		// return instance
 		return $instance;
 	}
 

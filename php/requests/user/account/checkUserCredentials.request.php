@@ -14,18 +14,15 @@ include $root . 'helpers/exceptionToResponse.helper.php';
 /* file paths */
 $usersFilePath = "../../../../app_data/users.json";
 
-
-// set file path
-if ( !file_exists("../../app_data") )
-	mkdir("../../app_data");
-
 // main request
 try {	
 	// check method
 	methodAllowed('POST');
 
 	// start session
-	session_start();
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 
 	// decode params from request
 	$params = json_decode(file_get_contents('php://input'));

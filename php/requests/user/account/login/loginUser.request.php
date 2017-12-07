@@ -17,6 +17,11 @@ try {
 	// check method
 	methodAllowed('POST');
 
+	// start session
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
+	
 	// decode params from request
 	$params = json_decode(file_get_contents('php://input'));
 
