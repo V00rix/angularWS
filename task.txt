@@ -1,74 +1,21 @@
-// RU
-Вступление: 
-За прошлый месяц наш небольшой стартап по производству игрушек нового поколения пользовался большой популярностью, в связи с чем мы решили продолжить работать над этой идеей. С растущим количеством клиентов постала потребность в обеспечении удобного способа для заказа товаров.
-
-Конечная цель:
-Мы нуждаемся в веб сайте - целостном и независимом решении, которое мы могли бы разместить на своём сервере. Веб сайт будет выполнять следующие цели:
-1. Возможность для всех пользователей просматривать всю информацию о предоставлямых нами товарах, т.е.:
-	- стоимость
-	- если есть в наличии (если продукта нету в наличии - всё равно предоставить информацию о нём)
-	- рейтинг продукта (составляется основываясь на оставленых пользователями отзывах)
-	- отзывы пользователей о продукте
-2. Возможность регистрации на сайте для следующих действий:
-	2.1. Возможность заказа товаров
-	2.2. Возможность оставлять отзывы
-	2.3. Возможность удалять свой аккаунт
-
-Помимо этого, для редактирования данных о товарах и пользователях доджна быть создана дополнительная веб страница для администратора.
-
-Environment: 
-Серверовая часть должна быть выполнена в php. Поддерживаемая версия: <=7.0
-Веб сайт должен собой предтавлять Single-Page-Application, быть responsive, корректно отображаться на всех браузерах.
-Дизайн должен быть интуитивным и user-friendly.
-
-За выполненую работы вы получите 2 пива (1 пиво, но в happy hour)
-
-// RU
-Introduction:
-Over the past month, our small new generation toys production start-up has become very popular, so we decided to expand. With the growing number of customers, we are in need to provide a convenient way to order goods.
-
-Final goal:
-We need a web site - an integral and independent solution that we could host on our server. The website should fulfill the following objectives:
-1. The ability for all users to view all information about the products provided by us, ie:
-- cost
-- availability (if the product is not available - still provide information about it)
-- product rating (based on user feedback)
-- user reviews of the product
-2. Ability to register on the site for the following:
-2.1. Possibility of ordering goods
-2.2. Opportunity to leave feedback
-2.3. Ability to delete your account
-
-In addition, to edit the data on products and users, an additional web page for the administrator is created.
-
-Environment:
-The server part must be executed in php. Supported version: <= 7.0
-The web site should present itself a Single-Page-Application, be responsive, correctly displayed on all browsers.
-The design should be intuitive and user-friendly.
-
-For the work done you will get 2 beers (1 beer, but in a happy hour)
-
-// CZ
-Úvod:
+﻿Úvod:
 Během uplynulého měsíce byl náš malý startup na výrobu hraček nové generace velmi oblíbený, a proto jsme se rozhodli pokračovat v práci na této myšlence. S rostoucím počtem zákazníků je potřeba poskytnout pohodlný způsob objednání zboží.
 
 Konečný cíl:
 Potřebujeme webovou stránku - integrální a nezávislé řešení, které bychom mohli hostit na našem serveru. Webová stránka splní následující cíle:
 1. Schopnost pro všechny uživatele zobrazit všechny informace o námy poskytováných produktech, tedy:
 - cena
-- pokud je k dispozici (pokud produkt není k dispozici - stále o něm informuje)
+- pokud je k dispozici (pokud produkt není k dispozici - stále je možnost prohlízet např. recenze a cenu)
 - hodnocení produktu (založeno na uživatelské zpětné vazbě)
 - uživatelské recenze produktu
 2. Schopnost se zaregistrovat na webu pro následující:
 2.1. Možnost objednání zboží
-2.2. Příležitost opustit zpětnou vazbu
-2.3. Schopnost smazat váš účet
+2.2. Možnost napsání recenze
+2.3. Možnost smazání svého účtu
 
-Kromě toho, pro úpravu údajů o produktech a uživatelích, je vytvořena další webová stránka pro správce.
+Kromě toho, pro úpravu údajů o produktech a uživatelích, bude vytvořena další webová stránka pro správce.
 
 Softwarové prostředí:
 Serverová čast musí být v php. Podporovaná verze: >= 7.0
 Webová stránka musí byt Single-Page-Application, být resposivní a správně zobrazená ve všech prohlížečích.
 Design musí být intuitivní a user-friendly.
-
-Za řádně vyplněnou práci získáte 2 piva (1 pivo, ale v happy hour)
