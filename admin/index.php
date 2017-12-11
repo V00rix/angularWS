@@ -34,11 +34,13 @@ else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	*		-> DISPLAY ERROR IN THE BOTTOM OF LOGIN PAGE			
 	*/
 
+	// start session
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
+
 	// display default login header
 	echo file_get_contents("./login/login_form.template.html");	
-
-	// start session
-	session_start();
 
 	// check for errors while trying to login 
 	if (!isset($_SESSION['loginError']) || $_SESSION['loginError'] === "")

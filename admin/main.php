@@ -13,7 +13,9 @@ try {
 	methodAllowed('GET');
 	
 	// start session
-	session_start();
+	if (session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 	
 	// check permissions
 	isAllowed('admin', "");

@@ -99,7 +99,6 @@
 			// Call httpService to login
 			HttpService.login(requestsConfig.username, requestsConfig.email, requestsConfig.password).then(
 				(result) => {
-					console.log(result);
 					messageFactory.display("Login successful", "success");
 					requestsConfig.successCallback();
 				},

@@ -12,8 +12,8 @@
 					<h3 class="ws-product-title text-center">{{product.name | uppercase }}</h3>
 					<p class="ws-product-description text-center">{{ product.description }}</p>
 					<div class="ws-attach-bottom">
-						<h3 class="ws-action-text" ng-click="$ctrl.onProduct({ productName: product.name })">Details</h3>
-						<p ng-if="product.quantity === 0" class="ws-action-text ws-text-disabled">Sold Out</p>
+						<h3 ng-if="product.quantity > 0" class="ws-action-text" ng-click="$ctrl.onProduct({ productName: product.name })">Details</h3>
+						<h3 ng-if="product.quantity === 0" class="ws-action-text ws-text-disabled">Sold Out</h3>
 						<p ng-if="$ctrl.lowQuantity(product.quantity)" class="ws-important-text">Only {{ product.quantity }} pieces left!</p>
 					</div>
 				</div>

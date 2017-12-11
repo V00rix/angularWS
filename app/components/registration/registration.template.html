@@ -1,36 +1,9 @@
 <link rel="stylesheet" href="./components/registration/registration.styles.css">
-<div class="ws-lowered-60" >
+<div class="container ws-lowered-60" >
 	<div class="row">
 		<div class="col-xs-12 col-sm-8 col-sm-offset-2 ws-form">
 			<h1 class="text-center">Register</h1>
-			<form ng-submit="$ctrl.register(form.$valid)" name="form" novalidate autocomplete="off">				
-				<div class="form-group">
-					<label for="email">Email</label>
-					<input type="email" class="form-control" name="email" id="email" ng-model="$ctrl.email" placeholder="Email" required="" ng-change="$ctrl.checkEmail(form.email.$valid)" ng-model-options="{ debounce: 300 }" pattern="^[^ ]+@[^ ]+\.[^ ]+$">
-					<!-- Warnigns -->
-					<div class="ws-warnings">
-						<div ng-show="form.email.$touched">
-							<p class="ws-error-label" ng-show="form.email.$error.pattern">
-								Invalid email format
-							</p>
-							<p class="ws-error-label" ng-show="form.email.$error.required">
-								Email is required
-							</p>
-						</div>
-						<!-- Asyng validators -->
-						<div ng-show="$ctrl.email">	
-							<p class="ws-warn-label" ng-if="$ctrl.emailNotFree === null">
-								Searching...
-							</p>
-							<p class="ws-error-label" ng-if="$ctrl.emailNotFree === true">
-								Email «{{$ctrl.email}}» is not available
-							</p>
-							<p class="ws-success-label" ng-if="$ctrl.emailNotFree === false">
-								Email «{{$ctrl.email}}» is available
-							</p>
-						</div>
-					</div>
-				</div>
+			<form ng-submit="$ctrl.register(form.$valid)" name="form" novalidate autocomplete="off">
 				<div class="form-group">
 					<label for="username">Username</label>
 					<input type="text" class="form-control" name="username" id="username" ng-model="$ctrl.username" placeholder="Username" required="" ng-change="$ctrl.checkUsername(form.username.$valid)" ng-model-options="{ debounce: 300 }" minlength="4" maxlength="12" pattern="^[A-z0-9]*$">
@@ -60,6 +33,34 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<!-- TODO: create async validators -->
+					<label for="email">Email</label>
+					<input type="email" class="form-control" name="email" id="email" ng-model="$ctrl.email" placeholder="Email" required="" ng-change="$ctrl.checkEmail(form.email.$valid)" ng-model-options="{ debounce: 300 }" pattern="^[^ ]+@[^ ]+\.[^ ]+$">
+					<!-- Warnigns -->
+					<div class="ws-warnings">
+						<div ng-show="form.email.$touched">
+							<p class="ws-error-label" ng-show="form.email.$error.pattern">
+								Invalid email format
+							</p>
+							<p class="ws-error-label" ng-show="form.email.$error.required">
+								Email is required
+							</p>
+						</div>
+						<!-- Asyng validators -->
+						<div ng-show="$ctrl.email">	
+							<p class="ws-warn-label" ng-if="$ctrl.emailNotFree === null">
+								Searching...
+							</p>
+							<p class="ws-error-label" ng-if="$ctrl.emailNotFree === true">
+								Email «{{$ctrl.email}}» is not available
+							</p>
+							<p class="ws-success-label" ng-if="$ctrl.emailNotFree === false">
+								Email «{{$ctrl.email}}» is available
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="password">Password</label>
 					<input type="password" class="form-control" name="password" id="password" ng-model="$ctrl.password" placeholder="Password" required minlength="8" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]*$">
 					<!-- Warnings -->
@@ -83,7 +84,7 @@
 					<label for="passwordSecond">Re-enter password</label>
 					<input type="password" class="form-control" name="passwordSecond" id="passwordSecond" ng-model="$ctrl.passwordSecond" placeholder="Re-enter password" required match="password">
 					<!-- Warnings -->
-					<div ng-show="form.passwordSecond.$dirty || form.$submitted">						
+					<div ng-show="form.passwordSecond.$dirty">						
 						<p class="ws-warn-label" ng-show="form.passwordSecond.$error.pwmatch">
 							Passwords do not match
 						</p>

@@ -1,0 +1,9 @@
+[11-Dec-2017 03:26:29 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function redirectTo() in /home2/elumixor/public_html/angularWS/admin/index.php:23
+Stack trace:
+#0 {main}
+  thrown in /home2/elumixor/public_html/angularWS/admin/index.php on line 23
+[11-Dec-2017 03:27:14 America/Chicago] PHP Fatal error:  Uncaught Error: Call to undefined function redirectTo() in /home2/elumixor/public_html/angularWS/admin/index.php:23
+Stack trace:
+#0 {main}
+  thrown in /home2/elumixor/public_html/angularWS/admin/index.php on line 23
+[11-Dec-2017 04:01:37 America/Chicago] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home2/elumixor/public_html/angularWS/admin/index.php:38) in /home2/elumixor/public_html/angularWS/admin/index.php on line 41
