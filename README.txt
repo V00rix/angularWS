@@ -19,3 +19,4 @@ Softwarové prostředí:
 Serverová čast musí být v php. Podporovaná verze: >= 7.0
 Webová stránka musí byt Single-Page-Application, být resposivní a správně zobrazená ve všech prohlížečích.
 Design musí být intuitivní a user-friendly.
+Data nejsou uložená do databáze - stáčí soubory formátu .json.
