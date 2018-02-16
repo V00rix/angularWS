@@ -1,3 +1,3 @@
 <?php 
-	echo "LoL Not Found 404";
+	echo "Not Found 404";
  ?>

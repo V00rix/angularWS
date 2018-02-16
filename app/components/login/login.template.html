@@ -1,11 +1,11 @@
 <link rel="stylesheet" href="./components/login/login.styles.css">
 <div class="ws-full-cover" ng-click="$ctrl.windowClosed()"></div>
 <div class="ws-login-container">
-    <form ng-submit="$ctrl.login(form.$valid)" name="form" novalidate>
+    <form ng-submit="$ctrl.login(form_login.$valid)" name="form_login" novalidate>
         <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" class="form-control" name="username" id="username" ng-model="$ctrl.username"
-                   placeholder="Username" required="" ng-change="$ctrl.checkUsername(form.username.$valid)"
+            <label for="username_login">Username</label>
+            <input type="text" class="form-control" name="username" id="username_login" ng-model="$ctrl.username"
+                   placeholder="Username" required="" ng-change="$ctrl.checkUsername(form_login.username.$valid)"
                    ng-model-options="{ debounce: 300 }" minlength="4" maxlength="12">
             <!-- Warnings -->
             <div class="ws-warnings">
@@ -28,11 +28,11 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" name="password" id="password" ng-model="$ctrl.password"
+            <label for="password_login">Password</label>
+            <input type="password" class="form-control" name="password" id="password_login" ng-model="$ctrl.password"
                    placeholder="Password" required>
 
-            <p class="ws-warn-label" ng-show="form.password.$error.required && !$ctrl.badPassword">Password is empty</p>
+            <p class="ws-warn-label" ng-show="form_login.password.$error.required && !$ctrl.badPassword">Password is empty</p>
             <p class="ws-error-label" ng-if="$ctrl.badPassword">Wrong password</p>
         </div>
         <div class="text-center">

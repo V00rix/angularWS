@@ -35,7 +35,7 @@ try {
 	$res = CCredentialsCheckResponse::from(validUserFields($params, $users, false));
 
 	// attempt to create new user
-	if (!$res->usernameFound && !$res->emailFound);
+	if (!$res->usernameFound && !$res->emailFound)
 		array_push($users, new CUser($params->username, $params->email, password_hash($params->password, PASSWORD_BCRYPT)));
 
 	// check if not in use by admin
