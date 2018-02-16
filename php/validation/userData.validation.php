@@ -6,6 +6,15 @@ $root = $_SERVER['DOCUMENT_ROOT'] . '/angularWS/php/';
 include_once $root . '/classes/Exceptions/exceptions.php';
 
 // validates all users in the list
+/**
+ * @param $users
+ * @param bool $strictMode
+ * @throws argumentMissingException
+ * @throws badArgumentException
+ * @throws badEmailException
+ * @throws badPasswordException
+ * @throws badUsernameException
+ */
 function validateUserList($users, $strictMode = true) {
 	if (!is_array($users)) 
 		throw new badArgumentException("Input is not a users array");
@@ -16,6 +25,15 @@ function validateUserList($users, $strictMode = true) {
 }
 
 // validate userlist with from admin's request
+/**
+ * @param $newUsers
+ * @param $oldUsers
+ * @throws argumentMissingException
+ * @throws badArgumentException
+ * @throws badEmailException
+ * @throws badPasswordException
+ * @throws badUsernameException
+ */
 function validateEncryptedUserList($newUsers, $oldUsers) {	
 	foreach ($newUsers as $user) {
 		validUsername($user->username, null);
@@ -43,6 +61,17 @@ function validateEncryptedUserList($newUsers, $oldUsers) {
 }
 
 // validate all user fields
+/**
+ * @param $user
+ * @param null $userList
+ * @param bool $strictMode
+ * @return stdClass
+ * @throws argumentMissingException
+ * @throws badArgumentException
+ * @throws badEmailException
+ * @throws badPasswordException
+ * @throws badUsernameException
+ */
 function validUserFields($user, $userList = null, $strictMode = true) {	
 	if (!isset($user)) 
 		throw new argumentMissingException("user");
@@ -67,6 +96,14 @@ function validUserFields($user, $userList = null, $strictMode = true) {
 }
 
 // checks if username is valid
+/**
+ * @param $username
+ * @param null $userList
+ * @return bool
+ * @throws argumentMissingException
+ * @throws badArgumentException
+ * @throws badUsernameException
+ */
 function validUsername($username, $userList = null) {
 	// check if is set
 	if (!isset($username))
@@ -87,6 +124,14 @@ function validUsername($username, $userList = null) {
 }
 
 // checks if email is valid
+/**
+ * @param $email
+ * @param null $userList
+ * @return bool
+ * @throws argumentMissingException
+ * @throws badArgumentException
+ * @throws badEmailException
+ */
 function validEmail($email, $userList = null) {
 	// check if is set
 	if (!isset($email))
@@ -107,6 +152,14 @@ function validEmail($email, $userList = null) {
 }
 
 // checks if password is valid
+/**
+ * @param $password
+ * @param null $userList
+ * @return bool
+ * @throws argumentMissingException
+ * @throws badArgumentException
+ * @throws badPasswordException
+ */
 function validPassword($password, $userList = null) {
 	// check if is set
 	if (!isset($password)) 

@@ -7,9 +7,11 @@ include_once $root . '/classes/Exceptions/exceptions.php';
 
 // checks if method is allowed
 // throws a methodNotAllowedException if not
+/**
+ * @param $method
+ * @throws methodNotAllowedException
+ */
 function methodAllowed($method) {
 	if ($_SERVER['REQUEST_METHOD'] !== $method)
 		throw new methodNotAllowedException("Method '" . $_SERVER['REQUEST_METHOD'] ."' is not allowed.");
 }
-
- ?>

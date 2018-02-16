@@ -1,24 +1,25 @@
 (function () {
-  "use strict";
+    "use strict";
 
-  var ProductsController = function ($scope, ProductsService) { 
-    var $ctrl = this;
+    var ProductsController = function () {
+        var $ctrl = this;
 
-    $ctrl.$onInit = function() {};
+        $ctrl.$onInit = function () {
+        };
 
-    $ctrl.lowQuantity = function(quantity) {
-      return (quantity <= 10 && quantity >  0) ? true : false;
-    }
-  }
+        $ctrl.lowQuantity = function (quantity) {
+            return (quantity <= 10 && quantity > 0);
+        }
+    };
 
-  ProductsController.$inject = ["$scope", "ProductsService"];
+    ProductsController.$inject = ["$scope", "ProductsService"];
 
-  angular.module("app").component('wsProducts', {
-    templateUrl: './components/products/products.template.html',
-    controller: ProductsController,
-    bindings: {
-      products: '<',
-      onProduct: '&'
-    }
-  })
+    angular.module("app").component('wsProducts', {
+        templateUrl: './components/products/products.template.html',
+        controller: ProductsController,
+        bindings: {
+            products: '<',
+            onProduct: '&'
+        }
+    })
 })();

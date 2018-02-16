@@ -8,6 +8,11 @@ include_once $root . '/classes/Exceptions/exceptions.php';
 // validation
 include_once $root . '/validation/common.validation.php';
 
+/**
+ * @param $review
+ * @throws argumentMissingException
+ * @throws badArgumentException
+ */
 function validateReview($review) {
 	// Review title length constraints
 	$minTitleLength = 5;

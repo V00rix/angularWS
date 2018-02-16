@@ -19,7 +19,12 @@ class CCredentialsCheckResponse
 	}
 
 	// copy constructor
-	public static function from( $another ) {
+
+    /**
+     * @param $another
+     * @return CCredentialsCheckResponse
+     */
+    public static function from($another ) {
 		$instance = new self();
 		$instance->usernameFound = $another->usernameFound;
 		$instance->emailFound = $another->emailFound;

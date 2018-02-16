@@ -12,6 +12,12 @@ include_once $root . 'validation/product.validation.php';
 
 /* Functions */
 // buy product
+/**
+ * @param $product
+ * @param $productsList
+ * @param $user
+ * @throws badArgumentException
+ */
 function buyProduct($product, $productsList, $user) {
 	// check product id
 	if (!isset($product->id))
@@ -38,6 +44,12 @@ function buyProduct($product, $productsList, $user) {
 }
 
 // find first product with such id
+/**
+ * @param $productList
+ * @param $id
+ * @return mixed
+ * @throws badArgumentException
+ */
 function findProduct($productList, $id) {
 	foreach ($productList as $product) {
 		if ($product->id === $id)
@@ -47,6 +59,13 @@ function findProduct($productList, $id) {
 }
 
 // add review to a product
+/**
+ * @param $productId
+ * @param $products
+ * @param $review
+ * @throws argumentMissingException
+ * @throws badArgumentException
+ */
 function addReview($productId, $products, $review) {
 	// check product id and try to find product
 	if (!isset($productId))

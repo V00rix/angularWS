@@ -8,22 +8,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="products">WebShop</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li><a href="products" ng-click="$ctrl.displayLogin = false">Products</a></li>
-        
       </ul>
-      <!-- shown only if current user is admin -->
       <ul class="nav navbar-nav navbar-right">
         <li><a href="cart" ng-click="$ctrl.displayLogin = false">Cart  <span class="badge">{{ $ctrl.getFullLength() }}</span></a></li>
-<!--         <li ng-if="$ctrl.getCurrentUser()"  class="hidden-xs">
-          <a class="ws-cursor-default navbar-user" href="" ng-mouseenter="$ctrl.displayUserData()">
-            <span class="glyphicon glyphicon-user ws-user-glyphicon" aria-hidden="true"></span>
-            {{ $ctrl.getCurrentUser().username }}
-          </a> 
-        </li> -->
         <li ng-if="$ctrl.getCurrentUser()">
           <a class="ws-light-color ws-fz-sm" ng-click="$ctrl.logout()" href="">Logout</a>
         </li>
@@ -31,14 +22,9 @@
           <a class="ws-warn-label ws-fz-sm ws-no-margin ws-color-error" ng-click="$ctrl.deleteAccount()" href="">Delete account</a>
         </li>
         <li ng-if="!$ctrl.getCurrentUser()"><a ng-click="$ctrl.displayLogin = !$ctrl.displayLogin" href="">Login</a></li>
-        <li ng-if="!$ctrl.getCurrentUser()"><a href="./registration">Register</a></li>
+        <li ng-if="!$ctrl.getCurrentUser()"><a href="registration">Register</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container-fluid -->
-  <!-- Popup user data -->
-<!--   <div class="ws-user-data text-right" ng-if="$ctrl.userDataDisplayed" ng-mouseenter="$ctrl.displayUserData()" ng-mouseleave="$ctrl.hideUserData()">
-   <a class="btn ws-light-color ws-fz-sm" ng-click="$ctrl.logout()">Logout</a>
-   <a class="btn ws-warn-label ws-fz-sm" ng-click="$ctrl.deleteAccount()" >Delete account</a>
- </div> -->
  <ws-login window-closed="$ctrl.displayLogin = false" ng-if="$ctrl.displayLogin"></ws-login>
 </nav>

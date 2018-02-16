@@ -1,17 +1,13 @@
 <link rel="stylesheet" href="./components/product-detail/review/review.styles.css">
 <div class="container-fluid ws-review-container {{$ctrl.reviewColor()}}">
-	<div class="row">
-		<div class="col-xs-3 col-sm-12 col-md-3">
-			<div class="col-xs-12 col-sm-12 col-md-12">				
-				<h3 class="text-center ws-color-gray ws-cursor-default">{{ $ctrl.review.user.username | uppercase}}</h3>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-12">
-				<p class="ws-review-date text-center ws-color-gray ws-cursor-default">{{$ctrl.review.date | date:'d/M/y HH:mm'}}</p>
-			</div>
-		</div>
-		<div class="col-xs-9 col-sm-12 col-md-9">
-			<h3 class=" ws-review-title"><b>{{ $ctrl.review.title | uppercase }}</b></h3>
-			<p>{{ $ctrl.review.description }}</p>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-xs-12 col-md-3">
+            <h5 class="ws-cursor-default">{{ $ctrl.review.user.username | uppercase}}</h5>
+            <p class="ws-review-date ws-color-gray ws-cursor-default">{{$ctrl.review.date | date:'d/M/y HH:mm'}}</p>
+        </div>
+        <div class="col-xs-12 col-md-9">
+            <h3 class="ws-review-title"><b>{{ $ctrl.review.title | uppercase }}</b></h3>
+            <p>{{ $ctrl.review.description }}</p>
+        </div>
+    </div>
 </div>

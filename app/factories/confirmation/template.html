@@ -2,7 +2,7 @@
 	<div class="ws-confirmation-overlay" ng-click="close()"></div>
 	<div class="ws-confirmation">
 		<a href="" class="ws-confirmation-close" ng-click="close()">&times;</a>
-		<h3 class="ws-warn-label">{{message}}</h3>
+		<h3 class="ws-warn-label ws-confirmation-message">{{message}}</h3>
 		<button ng-click="$ctrl.ok()" class="btn btn-warning">{{optionOk}}</button>
 		<button ng-click="close()" class="btn">{{optionCancel}}</button>
 	</div>

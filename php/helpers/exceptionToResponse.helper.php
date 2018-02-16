@@ -5,6 +5,9 @@ $root = $_SERVER['DOCUMENT_ROOT'] . '/angularWS/php/';
 include_once $root . 'classes/Exceptions/exceptions.php';
 
 // Transform errors to http responses
+/**
+ * @param $e
+ */
 function transformException($e) {
 	try {
 		throw $e;

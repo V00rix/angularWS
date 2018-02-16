@@ -1,12 +1,18 @@
 <?php /* Redirect to other page */
 
 // Normal redirect 
+/**
+ * @param $path
+ */
 function redirectTo($path) {
 	header("HTTP/1.1 303 See Other");
 	header("location: " . $path);
 }
 
 // Refresh instead of redirect (for correct angularjs)
+/**
+ * @param $path
+ */
 function refreshRedirectTo($path) {
 	header('Refresh: '. $path);
 }

@@ -1,17 +1,19 @@
 .ws-login-form {
 	position: fixed;
 	max-width: 400px;
-	top: 0px;
+	top: 0;
 	right: 0;
 	margin: 60px 6px;
 	box-shadow: 0 0 10px;
-	padding: 20px 0px;
+	padding: 20px 0;
 	border-radius: 4px;
 	background-color: white;
 }
 
 .navbar-nav>li>a {
+	color: var(--color-primary-4) !important;
 	font-size: 1.2em;
+	transition: color var(--transition-instant);
 }
 
 .navbar-nav>li>a:hover {
@@ -22,26 +24,15 @@
 	color: white !important;
 }
 
-
-
-.navbar-user:focus {
-	color: white !important;
-}
-
-.ws-user-glyphicon {
-	margin: 0 5px 0 0;
-}
-
 .ws-user-data {
 	position: absolute;
 	top: 50px;
 	right: 0;
-	background: #3f3f3f;
 	box-shadow: 0 0 10px;
 }
 
 .ws-navbar {
-	background-color: #3f3f3f;
-	border-color: var(--main-bg-color);
-	/*border-color: #000000;*/
+	background-color: var(--color-primary-2);
+	border: none;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.38);
 }

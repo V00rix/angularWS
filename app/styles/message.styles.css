@@ -1,13 +1,13 @@
 .ws-message-container {
 	position: fixed;
 	z-index: 10000;
-	background-color: #40872bed;
+	background-color: var(--color-success);
 	width: 100%;
-	top: 52px;
+	top: 50px;
 	padding: 10px 5px 10px 5px;
-	box-shadow: 0 0 10px black;
+	box-shadow: var(--box-shadow-2);
 	text-align: center;
-	color: white;
+	color: #efefef;
 }
 
 .ws-message-text {

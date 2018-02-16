@@ -1,19 +1,49 @@
-/* ws-lowered */
-.ws-lowered-60 {
-	margin-top: 60px;
+/* Top margins */
+.ws-margin-top-60 {
+    margin-top: 60px;
 }
-.ws-lowered-50 {
-	margin-top: 50px;
+
+.ws-margin-top-50 {
+    margin-top: 50px;
 }
-.ws-lowered-40 {
-	margin-top: 40px;
+
+.ws-margin-top-40 {
+    margin-top: 40px;
 }
-.ws-lowered-30 {
-	margin-top: 30px;
+
+.ws-margin-top-30 {
+    margin-top: 30px;
 }
-.ws-lowered-20 {
-	margin-top: 20px;
+
+.ws-margin-top-20 {
+    margin-top: 20px;
 }
-.ws-lowered-10 {
-	margin-top: 10px;
+
+.ws-margin-top-10 {
+    margin-top: 10px;
+}
+
+.ws-margin-top-0 {
+    margin-top: 0;
+}
+
+/* Bottom margins */
+.ws-margin-bottom-100 {
+    margin-bottom: 100px;
+}
+
+.ws-margin-bottom-30 {
+    margin-bottom: 30px;
+}
+
+.ws-margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+.ws-margin-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.ws-margin-bottom-0 {
+    margin-bottom: 0;
 }

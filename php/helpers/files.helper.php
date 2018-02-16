@@ -1,4 +1,4 @@
-<?php /* Working with files functionallity */
+<?php /* Working with files functionality */
 /* includes */
 $root = $_SERVER['DOCUMENT_ROOT'] . '/angularWS/php/';
 
@@ -6,6 +6,11 @@ $root = $_SERVER['DOCUMENT_ROOT'] . '/angularWS/php/';
 include_once $root . 'validation/fileExists.validation.php';
 
 // change editing availability 
+/**
+ * @param $status
+ * @param string $filePath
+ * @throws fileNotFoundException
+ */
 function setEditStatus($status, $filePath = "../../../../app_data/changes.json") {
 	// check file
 	fileExists($filePath);
@@ -22,6 +27,11 @@ function setEditStatus($status, $filePath = "../../../../app_data/changes.json")
 }
 
 // get editing availability
+/**
+ * @param string $filePath
+ * @throws fileNotFoundException
+ * @throws inUseException
+ */
 function canEdit($filePath = "../../../../app_data/changes.json") {
 	// check file
 	fileExists($filePath);
@@ -36,6 +46,11 @@ function canEdit($filePath = "../../../../app_data/changes.json") {
 
 /* Reading/Writing/Updating file contents */
 // Read contents from file as json 
+/**
+ * @param $filePath
+ * @return mixed
+ * @throws fileNotFoundException
+ */
 function getFileContents($filePath) {
 	// check file
 	fileExists($filePath);
@@ -45,6 +60,11 @@ function getFileContents($filePath) {
 }
 
 // Read contents from file as plain text
+/**
+ * @param $filePath
+ * @return bool|string
+ * @throws fileNotFoundException
+ */
 function getTextFileContents($filePath) {
 	// check file
 	fileExists($filePath);
@@ -54,6 +74,10 @@ function getTextFileContents($filePath) {
 }
 
 // rewrite file contents 
+/**
+ * @param $filePath
+ * @param $data
+ */
 function fileUpdateContents($filePath, $data) {
 	// clear file contents if it exists
 	if ( file_exists($filePath) )
@@ -66,6 +90,10 @@ function fileUpdateContents($filePath, $data) {
 }
 
 /* Read and echo content */
+/**
+ * @param $filePath
+ * @throws fileNotFoundException
+ */
 function echoJsonContent($filePath) {
 	// check file
 	fileExists($filePath);

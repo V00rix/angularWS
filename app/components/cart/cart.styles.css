@@ -5,11 +5,7 @@
 }
 
 .ws-cart {
-	color: var(--ws-main-text-color);
-}
-
-.ws-cart-form {
-	color: black;
+    font-size: var(--font-size-small);
 }
 
 .ws-col-normalized {

@@ -1,4 +1,8 @@
 <?php /* Represents user model */
+
+/**
+ * Class CUser
+ */
 class CUser {
 	// unique per user
 	public $username;
@@ -7,7 +11,13 @@ class CUser {
 	// history of previous transactions
 	public $history = [];
 
-	function __construct($username, $email, $password)
+    /**
+     * CUser constructor.
+     * @param $username
+     * @param $email
+     * @param $password
+     */
+    function __construct($username, $email, $password)
 	{
 		$this->username = $username;
 		$this->email = $email;

@@ -18,7 +18,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$_SESSION['password'] = $_POST['password'];
 
 	// redirect to main login logic
-	redirectTo($loginAdminPath);
+    redirectTo($loginAdminPath);
 }
 // login form (watch description inside for more info)
 else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
@@ -27,10 +27,10 @@ else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 	*
 	*		1. The page is loaded for the first time
 	*		so we $_SESSION['loginError'] is not yet set.
-	*		-> DISPLAY USUSAL LOGIN PAGE
+	*		-> DISPLAY USUAL LOGIN PAGE
 	*
-	*		2. Redirect has occured from $loginAdminPath,
-	*		because errors has occured
+	*		2. Redirect has occurred from $loginAdminPath,
+	*		because errors has occurred
 	*		-> DISPLAY ERROR IN THE BOTTOM OF LOGIN PAGE			
 	*/
 
@@ -39,15 +39,19 @@ else if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 		session_start();
 	}
 
+	if (!isset($_SESSION['username']))
+        $_SESSION['username'] = '';
 	// display default login header
-	echo file_get_contents("./login/login_form.template.html");	
+	echo file_get_contents("./login/login_form_1.template.html");
+	echo '<input class="ws-admin-input" id="username" type="text" name="username" value="' . $_SESSION['username'] . '" placeholder="username" />';
+	echo file_get_contents("./login/login_form_2.template.html");
 
 	// check for errors while trying to login 
 	if (!isset($_SESSION['loginError']) || $_SESSION['loginError'] === "")
 		// no errors -> usual login page
 		echo file_get_contents("./login/login_success.template.html");
 	else {
-		// error -> display errror
+		// error -> display error
 		echo file_get_contents("./login/error/login_error_0.template.html");
 		echo $_SESSION['loginError'];
 		echo file_get_contents("./login/error/login_error_1.template.html");
@@ -58,4 +62,3 @@ else {
 	header("HTTP/1.1 405 Method Not Allowed");
 	echo $_SERVER['REQUEST_METHOD'] . " method is not allowed";
 }
-?>

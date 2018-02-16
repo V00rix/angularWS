@@ -1,6 +1,7 @@
 .ws-form {
-	background-color: #5c5c5ce3;
-	padding: 15px 50px 50px;
-	color: white;
-	box-shadow: 0 0 50px 10px black;
+    background-color: #efefef;
+    font-size: var(--font-size-small);
+    padding: 15px 50px 40px;
+    box-shadow: var(--box-shadow-2);
+    border-radius: var(--border-radius-small);
 }

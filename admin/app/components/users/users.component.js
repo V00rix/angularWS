@@ -22,7 +22,7 @@
                 (res) => {
                     console.error(res);
                 });
-        }
+        };
 
         $ctrl.saveUsers = function() {
             $http.post($ctrl.updateRequestUrl, $ctrl.users).then(
@@ -33,18 +33,18 @@
                 (res) => {
                     console.error(res);
                 });
-        }
+        };
 
         $ctrl.UserSelected = function(id) {
             $ctrl.editing = true;
             $ctrl.selectedUserId = id;
             $ctrl.selectedUser = angular.copy($ctrl.users[id]);
-        }
+        };
 
         $ctrl.newUser = function() {
             $ctrl.selectedUser = new User();
             $ctrl.editing = true;
-        }
+        };
 
         $ctrl.editConfirmed = function(valid) {
             if (valid) {
@@ -55,11 +55,11 @@
                 $ctrl.closeEdit();
                 $ctrl.saveUsers();
             }
-        }
+        };
 
         $ctrl.editCanceled = function() {
             $ctrl.closeEdit();
-        }
+        };
 
         $ctrl.deleteUser = function() {
             if ($ctrl.selectedUserId || $ctrl.selectedUserId === 0) {
@@ -67,7 +67,7 @@
                 $ctrl.saveUsers();
             }
             $ctrl.closeEdit();
-        }
+        };
 
         $ctrl.closeEdit = function() {     
             $ctrl.editPassword = false; 
@@ -75,7 +75,7 @@
             $ctrl.selectedUserId = null;
             $ctrl.editing = false;
         }
-    }
+    };
 
     angular.module("app").component('wsUsers', {
        templateUrl: './app/components/users/users.template.html',

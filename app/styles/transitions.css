@@ -1,0 +1,7 @@
+.ws-transition-grow {
+    transition: transform var(--transition-short);
+}
+
+.ws-transition-grow:hover {
+    transform: scale(1.03);
+}

@@ -1,0 +1,49 @@
+/* Links, buttons */
+.ws-action-link {
+    color: var(--color-secondary-2-3);
+    margin: 0;
+    font-weight: 700;
+    cursor: pointer;
+    transition: color var(--transition-instant) ease-in;
+}
+
+.ws-action-link:hover {
+    color:  var(--color-secondary-2-1);
+}
+
+
+/* Buttons */
+.btn-primary {
+    /*color: var(--color-secondary-2-3) !important;*/
+    background-color:  var(--color-secondary-2-3) !important;
+    border-color: var(--color-secondary-2-3) !important;
+    transition: background-color var(--transition-short);
+}
+.btn-primary:hover {
+    background-color:  var(--color-secondary-2-2) !important;
+}
+
+/* Product container */
+.ws-product {
+    font-size: 1.8em;
+    font-weight: 600;
+    border-radius: var(--border-radius-small);
+    box-shadow: var(--box-shadow-2);
+    transition: box-shadow .3s;
+}
+.ws-product:hover {
+    box-shadow: 0 3px 15px rgba(0, 0, 0, .9);
+}
+
+.ws-product>img {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.46);
+}
+
+.ws-product>.ws-product-info {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    padding: 15px 15px 0;
+    background-color: var(--color-primary-2);
+}

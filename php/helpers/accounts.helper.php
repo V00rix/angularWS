@@ -9,6 +9,12 @@ include_once $root . 'classes/Product/CProduct.class.php';
 /* functions */
 // delete user from array and returns an updates list
 // throws a badUsernameException is the username is not found
+/**
+ * @param $dataList
+ * @param $username
+ * @return mixed
+ * @throws badUsernameException
+ */
 function deleteUser($dataList, $username) {
 	$i = 0;
 	foreach ($dataList as $key => $user) {
@@ -24,6 +30,12 @@ function deleteUser($dataList, $username) {
 
 // searches userlist for username and returns found user
 // throws a badUsernameException is the username is not found
+/**
+ * @param $userList
+ * @param $username
+ * @return mixed
+ * @throws badArgumentException
+ */
 function searchUsername($userList, $username) {
 	foreach ($userList as $user) {
 		if ($user->username === $username)
@@ -35,6 +47,14 @@ function searchUsername($userList, $username) {
 // checks if selected for selected user in userlist and checks the password hash
 // throws a badUsernameException is the username is not found
 // throws a badPasswordException is the password is wrong for the user
+/**
+ * @param $userList
+ * @param $username
+ * @param $password
+ * @return bool
+ * @throws badPasswordException
+ * @throws badUsernameException
+ */
 function searchUserPassword($userList, $username, $password) {
 	if (!isset($username)) 
 		throw new badUsernameException("No username recieved");

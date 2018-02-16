@@ -1,25 +1,21 @@
 <link rel="stylesheet" href="./components/products/products.styles.css">
 <br>
 <div class="row">
-	<div class="col-xs-12">
-		<div class="text-center">
-			<div ng-repeat="product in $ctrl.products" class="ws-product text-left ">
-				<div class="col-xs-12 ws-no-horizontal-padding">
-					<img ng-src="{{product.imageUrl}}" class="ws-product-image" alt="Description" />
-					<div class="ws-fader-bottom"></div>
-				</div>
-				<div class="col-xs-12 ws-no-horizontal-padding ws-product-info ws-margin-bottom-100">
-					<h3 class="ws-product-title text-center">{{product.name | uppercase }}</h3>
-					<p class="ws-product-description text-center">{{ product.description }}</p>
-					<div class="ws-attach-bottom">
-						<h3 ng-if="product.quantity > 0" class="ws-action-text" ng-click="$ctrl.onProduct({ productName: product.name })">Details</h3>
-						<h3 ng-if="product.quantity === 0" class="ws-action-text ws-text-disabled">Sold Out</h3>
-						<p ng-if="$ctrl.lowQuantity(product.quantity)" class="ws-important-text">Only {{ product.quantity }} pieces left!</p>
-					</div>
-				</div>
-				<div ng-if="$ctrl.lowQuantity(product.quantity)" class="ws-important hidden-xs">
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="text-center">
+        <div ng-repeat="product in $ctrl.products" class="ws-margin-bottom-30 col-sm-12 col-md-6">
+            <div class="ws-product ws-transition-grow ws-cursor-pointer" ng-click="$ctrl.onProduct({ productName: product.name })">
+                <img ng-src="{{product.imageUrl}}" class="ws-product-image" alt="Description"/>
+                <div class="ws-product-info">
+                    <h3 class="text-center">{{product.name | uppercase }}</h3>
+                    <p class="ws-product-description text-center">{{ product.description }}</p>
+                    <div class="ws-attach-bottom">
+                        <h3 ng-if="product.quantity === 0" class="ws-text-disabled">Sold Out</h3>
+                        <p ng-if="$ctrl.lowQuantity(product.quantity)" class="ws-important-text">Only {{
+                            product.quantity }}
+                            pieces left!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -18,48 +18,47 @@
 				(prods)=>{
 					$ctrl.cartProducts = prods;
 				});
-		}
+		};
 
 		$ctrl.getFullLength = function() {
 			return ProductsService.cartProducts.fullLength;
-		}
+		};
 
 		$ctrl.deleteAccount = function() {
 			confirmationFactory.confirm({message: "Are you sure you want to delete your account?", optionOk: "Yes", optionCancel: "No"}, () => {
 				LoginService.deleteAccount();
 			});
-		}
+		};
 
 		$ctrl.getCurrentUser = function () {
 			return LoginService.currentUser;
-		}
+		};
 		
 		$ctrl.logout = function() {
 			confirmationFactory.confirm({message: "Are you sure you want to log  out?", optionOk: "Yes", optionCancel: "No"}, () => {
 				LoginService.logout().then($ctrl.userDataDisplayed = false);
 			});
-		}
+		};
 
 		$ctrl.displayUserData = function() {
 			$ctrl.userDataDisplayed = true;
 			if ($ctrl.timeout)
 				clearTimeout($ctrl.timeout);
-		}
+		};
 
 		$ctrl.hideUserData = function() {
 			$ctrl.timeout = setTimeout(()=>{
 				$ctrl.userDataDisplayed = false;
 				$scope.$apply();
 			}, 600);	
-		}
+		};
 
 		/* Dropdown */
 		// Navbar and dropdowns
 		var toggle = document.getElementsByClassName('navbar-toggle')[0],
 		collapse = document.getElementsByClassName('navbar-collapse')[0],
-		dropdowns = document.getElementsByClassName('dropdown');;
-
-		// Toggle if navbar menu is open or closed
+            dropdowns = document.getElementsByClassName('dropdown');
+        // Toggle if navbar menu is open or closed
 		function toggleMenu() {
 			collapse.classList.toggle('collapse');
 			collapse.classList.toggle('in');
@@ -99,7 +98,7 @@
 		// Event listeners
 		window.addEventListener('resize', closeMenusOnResize, false);
 		toggle.addEventListener('click', toggleMenu, false);
-	}
+	};
 
 	HeaderController.$inject = ["$scope", "ProductsService", "LoginService", "confirmationFactory"];
 

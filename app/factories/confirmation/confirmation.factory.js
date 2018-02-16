@@ -103,7 +103,7 @@
         service.scope.$destroy();
         service.confirmCallback();
       }
-    }
+    };
 
     confirmationFactory.$inject = ["$compile", "$rootScope", "$http", "$controller", "$q"];
 

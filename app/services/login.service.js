@@ -46,7 +46,7 @@
 					console.error("Encountered a " + reason.status + " error. " + reason.data, reason);
 					requestsConfig.unhandledCallback(reason);
 				});
-		}
+		};
 
 		/**
 		* Login function: sends registration request to backend using request configuration parameter
@@ -82,7 +82,7 @@
 					console.error(reason);
 					requestsConfig.failureCallback(reason);
 				});				
-		}
+		};
 
 		this.login = function(requestsConfig) {
 			// Set default config
@@ -107,7 +107,7 @@
 					messageFactory.display(["Login failed", "Reason: " + reason.data], "error");
 					requestsConfig.failureCallback(reason);
 				});
-		}
+		};
 
 		/**
 		* subscribe to event which closes the login panel
@@ -115,14 +115,14 @@
 		this.subscribe = function(scope, callback) {
 			var handler = $rootScope.$on('login-changed', callback);
 			scope.$on('$destroy', handler);
-		}
+		};
 
 		/**
 		* emit event to close login panel
 		*/
 		this.onRegistrationStart = function () {
 			$rootScope.$emit('login-changed');			
-		}
+		};
 
 		/**
 		* assign selected user and close login panel
@@ -130,7 +130,7 @@
 		this.userChanged = function(user) {
 			this.currentUser = user;			
 			$rootScope.$emit('login-changed');
-		}
+		};
 
 		/**
 		* send logout request
@@ -145,7 +145,7 @@
 					messageFactory.display(["Could not logout", "Reason: " + reason.data], "warn", 7000);
 					console.error(reason); 
 				});
-		}
+		};
 
 		/**
 		* check if the user is already logged in
@@ -153,7 +153,7 @@
 		this.loggedIn = function() {
 			HttpService.loggedIn().then(
 				(res) => res.data ? this.userChanged(new User(res.data)) : null);
-		}
+		};
 
 		/**
 		* check if the user is already logged in
@@ -171,7 +171,7 @@
 					messageFactory.display(["Deletion failed", "Reason: " + reason.data], "error");
 				});
 		}
-	}
+	};
 
 
 	LoginService.$inject = ["$rootScope", "HttpService", "$q", "messageFactory"];

@@ -1,10 +1,10 @@
 (function () {
     "use strict";
 
-    var app = angular.module("app", ["ngRoute"]);
+    var app = angular.module("app", ["ngRoute", "ngAnimate"]);
 
     var configFunction = function ($routeProvider, $locationProvider) {
-        $locationProvider.html5Mode(true)
+        $locationProvider.html5Mode(true);
         $routeProvider
         .when("/", {redirectTo: '/products'})
         .when("/products",
@@ -36,7 +36,7 @@
         .otherwise({
             template: '<ws-not-found></ws-not-found>',
         });
-    }
+    };
     configFunction.$inject = ["$routeProvider" ,"$locationProvider"];
 
     app.config(configFunction);
@@ -49,15 +49,10 @@
         function AppController($scope, $location) {
             var ctrl = this;
 
-            ctrl.showDetail = function(productName) {
+                ctrl.showDetail = function(productName) {
                 $location.path('/product-detail/' + productName);
             }
         }
 
     })();
 })();
-
-function someFunction() {
-    console.log('test');
-    alert('rtest');
-}

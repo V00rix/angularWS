@@ -25,7 +25,7 @@
         $ctrl.reviewAdded({review: review});
       }
     };
-  }
+  };
 
   ReviewEditController.$inject = ["$scope", "LoginService"];
 

@@ -1,50 +1,56 @@
 .ws-review-container {
-	font-size: 2.4rem;
-	color: white;
-	background-color: black;
-	padding-bottom: 10px;
-	
-	/* word break */
-	overflow-wrap: break-word;
-	word-wrap: break-word;
-	-ms-word-break: break-all;
-	word-break: break-all;
-	word-break: break-word;
-	-ms-hyphens: auto;
-	-moz-hyphens: auto;
-	-webkit-hyphens: auto;
-	hyphens: auto;
+    font-size: var(--font-size-medium);
+    color: #efefef;
+    background-color: black;
+    padding: 10px 15px 20px;
 
-	/* transitions */
-	transition: background-color .15s ease-in;
+    margin-bottom: 5px;
+
+    border-radius: var(--border-radius-small);
+
+    /* word break */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+
+    /* transitions */
+    transition: background-color var(--transition-short) ease-in;
 }
-.ws-review-container:hover { 
-	background-color: #101010;
+
+.ws-review-container:hover {
+    background-color: #101010;
 }
 
 .ws-rating-5 {
-	border-right: 5px solid rgba(164, 217, 135, 0.95);
+    border-right: 5px solid var(--color-rating-5);
 }
+
 .ws-rating-4 {
-	
-	border-right: 5px solid rgba(90, 168, 164, 0.95);
+    border-right: 5px solid var(--color-rating-4);
 }
+
 .ws-rating-3 {
-	
-	border-right: 5px solid rgba(234, 228, 38, 0.95);
+    border-right: 5px solid var(--color-rating-3);
 }
+
 .ws-rating-2 {
-	
-	border-right: 5px solid rgba(234, 182, 87, 0.95);
+    border-right: 5px solid var(--color-rating-2);
 }
+
 .ws-rating-1 {
-	
-	border-right: 5px solid rgba(192, 24, 24, 0.95);
+    border-right: 5px solid var(--color-rating-1);
 }
 
 .ws-review-title {
-	font-size: 2em;
+    font-size: 1em;
 }
+
 .ws-review-date {
-	font-size: 1.7rem;
+    font-size: .7em;
 }

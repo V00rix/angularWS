@@ -68,7 +68,7 @@
       }
       service.scope.$destroy();
     }
-  }
+  };
 
   messageFactory.$inject = ["$compile", "$rootScope", "$http", "$q"];
 

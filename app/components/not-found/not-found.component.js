@@ -4,7 +4,7 @@
 	var NotFoundController = function ($scope) {
 		var $ctrl = this;
 
-    }
+    };
 
     NotFoundController.$inject = ["$scope"];
 

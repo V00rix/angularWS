@@ -22,7 +22,7 @@
     function getNumber(num) {
       return new Array(num);
     }
-  }
+  };
 
   ReviewController.$inject = ["$scope"];
 
@@ -33,4 +33,4 @@
       review: '<'
     }
   })
-})()
+})();

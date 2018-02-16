@@ -6,11 +6,11 @@
 
 		$ctrl.ok = function() {	
 			$scope.ok('test');
-		}
+		};
 
 		$ctrl.$onInit = function() {
 		}
-	}
+	};
 
 	confirmationController.$inject = ["$scope"];
 

@@ -1,4 +1,8 @@
-<?php 
+<?php
+
+/**
+ * Class CProduct
+ */
 class CProduct
 {
     // unique per product
@@ -18,10 +22,21 @@ class CProduct
 	}
 
 	// argument constructor
-	public static function with( $id, 
-		$name = null, $description = null,
-		$imageUrl = null, $quantity = null, 
-		$cost = null, $reviews ) {
+
+    /**
+     * @param $id
+     * @param null $name
+     * @param null $description
+     * @param null $imageUrl
+     * @param null $quantity
+     * @param null $cost
+     * @param $reviews
+     * @return CProduct
+     */
+    public static function with($id,
+                                $name = null, $description = null,
+                                $imageUrl = null, $quantity = null,
+                                $cost = null, $reviews ) {
 
 		// create new instance
 		$instance = new self();
@@ -39,7 +54,12 @@ class CProduct
 	}
 
 	// copy constructor
-	public static function from( $another ) {
+
+    /**
+     * @param $another
+     * @return CProduct
+     */
+    public static function from($another ) {
 		$instance = new self();
 		$instance->id = $another->id;
 		$instance->name = $another->name ? $another->name : "Nameless product";

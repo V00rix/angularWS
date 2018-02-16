@@ -17,7 +17,7 @@
 
     $ctrl.$onInit = function() {
       LoginService.onRegistrationStart();
-    }
+    };
 
 
     $ctrl.checkUsername = function(valid) {
@@ -36,7 +36,7 @@
         };  
         LoginService.checkCredentials(requestConfig);
       }
-    }
+    };
 
     // Validates email on input
     $ctrl.checkEmail = function(valid) {
@@ -50,7 +50,7 @@
         };
         LoginService.checkCredentials(requestConfig); 
       }
-    }
+    };
 
     $ctrl.register =  function(valid) {
       if (valid && !$ctrl.usernameNotFree && !$ctrl.emailNotFree) {      
@@ -66,7 +66,7 @@
               successCallback: () => {
                 LoginService.userChanged(new User($ctrl.username));
               }
-            })
+            });
             $location.path('/products');
           },
           failureCallback: function(error) {
@@ -77,7 +77,7 @@
         LoginService.register(requestConfig); 
       }
     }
-  }
+  };
 
   RegistrationController.$inject = ["$scope", "LoginService", "$location"];
 

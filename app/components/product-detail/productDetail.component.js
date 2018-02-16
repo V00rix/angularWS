@@ -25,7 +25,7 @@
         (res) => {
           console.error(res);
         });
-    }
+    };
 
     $ctrl.addToCart = function() {
       if ($ctrl.product.quantity > 0) {
@@ -47,8 +47,8 @@
     };
 
     $ctrl.lowQuantity = function(quantity) {
-      return (quantity <= 10 && quantity >  0) ? true : false;
-    }
+      return (quantity <= 10 && quantity > 0);
+    };
 
     // helpers
     $ctrl.round = function(number, precision) {
@@ -58,7 +58,7 @@
     };
 
     $ctrl.lowQuantity = function(quantity) {
-      return (quantity <= 10 && quantity >  0) ? true : false;
+      return (quantity <= 10 && quantity > 0);
     }
   };
 
@@ -66,6 +66,6 @@
 
   angular.module("app").component('wsProductDetail', {
     templateUrl: './components/product-detail/productDetail.template.html',
-    controller: ProductDetailController,
+    controller: ProductDetailController
   });
 })();

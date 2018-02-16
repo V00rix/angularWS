@@ -26,7 +26,7 @@
     			};  
     			LoginService.login(requestConfig);
     		}
-    	}
+    	};
 
     	$ctrl.checkUsername = function(valid) {
     		if (valid) {  
@@ -35,21 +35,17 @@
         		let requestConfig = {
         			username: $ctrl.username, 
         			usernameCallback: function(status) {
-        				if (status) {
-        					$ctrl.usernameFound = true;
-        				}
-        				else 
-        					$ctrl.usernameFound = false;
+        				$ctrl.usernameFound = !!status;
         			}
         		};  
         		LoginService.checkCredentials(requestConfig);
         	}
-        }
+        };
 
         $ctrl.register =  function() {
         	LoginService.onRegistrationStart();
         }
-    }
+    };
 
     LoginController.$inject = ["$scope", "HttpService", "LoginService"];
 
